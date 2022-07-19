@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rynsysengineering/screens/product_detail_screen.dart';
 
 import 'screens/home.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
           filled: true, fillColor: Colors.white,
         )
       ),
-      home: const Home(),
+      home:const ProductDetailScreen(),
+      // home: const Home(),
     );
   }
 }

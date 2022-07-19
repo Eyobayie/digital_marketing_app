@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rynsysengineering/constants/text_decorators.dart';
+import 'package:rynsysengineering/widgets/featured_product.dart';
+import 'package:rynsysengineering/widgets/home_tabs.dart';
 import 'package:rynsysengineering/widgets/search_field.dart';
-
+import '../widgets/shop.dart';
 import '../widgets/sliders.dart';
 class Home extends StatelessWidget {
   const Home({ Key? key }) : super(key: key);
@@ -27,13 +29,17 @@ class Home extends StatelessWidget {
       actions: [IconButton(
         onPressed: (){
         },
-       icon: const Icon(Icons.notifications))],
+       icon: const Icon(Icons.notifications)),],
       ),
       body: ListView(
        // padding: const EdgeInsets.symmetric(horizontal:10,vertical: 5),
-        children: const[
-          SearchField(),
-          ImageSliders(),
+        children:const [
+           SearchField(),
+           ImageSliders(),
+           Shop(),
+           FeaturedProduct(),
+           HomeTabs(),
+          //Testing(),
         ],
       ),
     );
