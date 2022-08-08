@@ -1,19 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class ImageSliders extends StatelessWidget {
-  const ImageSliders({ Key? key }) : super(key: key);
+   ImageSliders({ Key? key }) : super(key: key);
+     final _controller=PageController();
   @override
   Widget build(BuildContext context) {
    List<Widget> imageList=[
-    Image.asset('assets/images/solar panel1.png'),
-    Image.asset('assets/images/solar panel2.jpg'),
-    Image.asset('assets/images/solar panel3.jpg'),
-    ];
-    return SizedBox(
-      height: MediaQuery.of(context).size.height*0.15,
-      width: double.infinity,
-      child: Container(
-        color: Colors.green,
-      )
-      );
+Container(
+  height: 150,
+  width: double.infinity,
+  decoration:  BoxDecoration(
+    borderRadius:BorderRadius.circular(10),
+      image: const DecorationImage(
+      image: AssetImage(
+      'assets/images/solar panel5.jpg',
+    ),
+    fit: BoxFit.cover,
+  )),),
+        Container(
+          height: 150,
+          width: double.infinity,
+          decoration:  BoxDecoration(
+            borderRadius:BorderRadius.circular(10),
+              image: const DecorationImage(
+              image: AssetImage(
+              'assets/images/solar panel6.jpg',
+            ),
+            fit: BoxFit.cover,
+          )),),
+        Container(
+          height: 150,
+          width: double.infinity,
+          decoration:  BoxDecoration(
+            borderRadius:BorderRadius.circular(10),
+              image: const DecorationImage(
+              image: AssetImage(
+              'assets/images/solar panel7.jpg',
+            ),
+            fit: BoxFit.cover,
+          )),),
+        Container(
+          height: 150,
+          width: double.infinity,
+          decoration:  BoxDecoration(
+            borderRadius:BorderRadius.circular(10),
+              image: const DecorationImage(
+              image: AssetImage(
+              'assets/images/solar panel8.jpg',
+            ),
+            fit: BoxFit.cover,
+          )),),
+  ];
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          height:MediaQuery.of(context).size.height*0.15,
+          child: PageView.builder(
+          controller: _controller,
+          itemCount: imageList.length,
+          itemBuilder: (context, index)=>imageList[index],
+        )),
+        const SizedBox(height:5),
+        SmoothPageIndicator(
+          controller: _controller,
+           count: imageList.length,
+           effect:  const ScrollingDotsEffect(
+            activeDotColor: Colors.orange,
+            dotColor: Colors.grey,
+            spacing: 10,
+            dotHeight: 15,
+            dotWidth: 15,
+            ),
+            // onDotClicked: (index){
+            // },
+    ),]);
   }
 }

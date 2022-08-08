@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rynsysengineering/screens/bottom_navigator.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
-
-import 'screens/home.dart';
+import 'package:rynsysengineering/screens/product_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +18,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         inputDecorationTheme:const InputDecorationTheme(
           filled: true, fillColor: Colors.white,
-        )
-      ),
-      home:const ProductDetailScreen(),
-      // home: const Home(),
+          ),
+        ),
+      home: const BottomNavigatorScreen(),
+      routes: {
+        ProductDetailScreen.productDetailRoute:(context)=>const ProductDetailScreen(),
+        ProductListScreen.productListRoute:(context)=> ProductListScreen(),
+      },
     );
   }
 }

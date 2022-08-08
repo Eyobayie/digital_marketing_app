@@ -5,11 +5,9 @@ import 'package:rynsysengineering/widgets/product/review.dart';
 
 class ProductTabs extends StatefulWidget {
   const ProductTabs({Key? key}) : super(key: key);
-
   @override
   State<ProductTabs> createState() => _ProductTabsState();
 }
-
 class _ProductTabsState extends State<ProductTabs> {
   List<String> aboutProduct = ['Product', 'Detail', 'Review'];
   late List<Widget> tabList;
@@ -18,8 +16,7 @@ class _ProductTabsState extends State<ProductTabs> {
    void initState() {
     // TODO: implement initState
     super.initState();
-    tabList=const[ProductQuantity(),ProductDetail(),ProductReview()];
-
+    tabList=const[ProductQuantity(), ProductDetailWidget(), ProductReview()];
   }
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,7 @@ class _ProductTabsState extends State<ProductTabs> {
             itemBuilder: (context, index) => 
                 Center(
                     child: Container(
-                      height:MediaQuery.of(context).size.height*0.06,
+                      height:MediaQuery.of(context).size.height*0.05,
                       width: MediaQuery.of(context).size.width*0.3,
                       decoration: BoxDecoration(
                         color: selectedIndex==index? const  Color.fromARGB(255, 7, 42, 70):Colors.white,
@@ -45,8 +42,6 @@ class _ProductTabsState extends State<ProductTabs> {
                         onTap: (){
                           setState((){
                             selectedIndex=index;
-                            //tabList[index];
-                            //print(tabList.length.toString());
                           });
                         },
                         child: Center(
@@ -64,8 +59,8 @@ class _ProductTabsState extends State<ProductTabs> {
                         ),
                       ),
                     )),
-          ),
-        ),
+                ),
+              ),
         tabList[selectedIndex],
       ],
     );
