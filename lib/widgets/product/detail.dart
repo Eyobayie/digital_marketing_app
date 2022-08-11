@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_html/flutter_html.dart';
 class ProductDetailWidget extends StatelessWidget {
-  const ProductDetailWidget({ Key? key }) : super(key: key);
+  final String detail;
+   const ProductDetailWidget({ Key? key, required this.detail}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,11 +10,9 @@ class ProductDetailWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text('Description',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-        const Text('This is all about the description of the product,'
-         'please say something about our proudct never miss it'
-        'never say no about the product',
-        style: TextStyle(fontSize:18),
-        ),
+         Html(
+           data: detail,
+         ),
        const SizedBox(height: 20),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Container(

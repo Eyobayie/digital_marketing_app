@@ -1,13 +1,11 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rynsysengineering/providers/product/productdetailprovider.dart';
-import 'package:rynsysengineering/util/product_detail_service.dart';
-import 'package:provider/provider.dart';
+
 
 class ProductQuantity extends StatefulWidget {
-  const ProductQuantity({Key? key}) : super(key: key);
+  final int maximumProductQuantity;
+  const ProductQuantity({Key? key,required this.maximumProductQuantity}) : super(key: key);
 
   @override
   State<ProductQuantity> createState() => _ProductQuantityState();
@@ -15,14 +13,25 @@ class ProductQuantity extends StatefulWidget {
 
 class _ProductQuantityState extends State<ProductQuantity> {
    int _counter=1;
+  
    void reduceQuantity(){
     setState(() {
-      _counter--;
+      if(_counter<0){
+        _counter=1;
+      }
+      else{
+        _counter--;
+      }
     });
    }
    void increaseQuantity(){
     setState(() {
-      _counter++;
+      if(_counter<widget.maximumProductQuantity){
+              _counter++;
+      }
+      else{
+        _counter=widget.maximumProductQuantity;
+      }
     });
    }
   @override
@@ -128,11 +137,10 @@ class _ProductQuantityState extends State<ProductQuantity> {
                                   fontSize: 20),
                             ),
                           )),
-                        ),
-                      ]),
-                ],
-              ),
-            );
-         
-  }
+                   ),
+                ]),
+             ],
+          ),
+       );    
+   }
 }

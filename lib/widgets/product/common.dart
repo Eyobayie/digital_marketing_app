@@ -13,7 +13,8 @@ class Common extends StatelessWidget {
   // Image.asset('assets/images/solar panel1.jpg',fit: BoxFit.cover),
   // Image.asset('assets/images/solar panel2.jpg',fit: BoxFit.cover),
   // Image.asset('assets/images/solar panel3.jpg',fit: BoxFit.cover),
-  // ];
+  // ]
+  
   final iconSize=30.0;
   final iconColor=Colors.orange;
 
@@ -75,7 +76,7 @@ class Common extends StatelessWidget {
           ),),
          const SizedBox(height: 10,),
            Divider(color: Colors.black.withOpacity(0.7), thickness: 1),
-           const ProductTabs(),
+           ProductTabs( maximumProductQuantity: int.parse(snapshot.data!.quantity), ProductDetail: snapshot.data!.detail),
         ],
         );
         }
