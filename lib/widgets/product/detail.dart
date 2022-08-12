@@ -9,9 +9,13 @@ class ProductDetailWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Description',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-         Html(
-           data: detail,
+        const Text('Detail',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+         ListView(
+          scrollDirection: Axis.horizontal,
+           children:[
+            Html(
+             data: detail,       
+           ),],
          ),
        const SizedBox(height: 20),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [

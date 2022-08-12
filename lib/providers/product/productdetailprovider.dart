@@ -14,7 +14,7 @@
 //  }
 import 'package:flutter/cupertino.dart';
 
-class ProductDetail with ChangeNotifier{
+class ProductDetail{
   int id;
   String name;
   String model;

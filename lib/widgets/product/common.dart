@@ -65,8 +65,8 @@ class Common extends StatelessWidget {
                  Icon(Icons.star,color: iconColor,size: iconSize),
                  Icon(Icons.star,color: iconColor,size: iconSize),
                  Icon(Icons.star,color: iconColor,size: iconSize),
-                 Icon(Icons.star,size: iconSize,),
-                 const Text('4.5')
+                 Icon(Icons.star,size: iconSize,color: iconColor,),
+                 const Text('4.5',style: TextStyle(fontWeight: FontWeight.bold),),
                ],
              ),
           ],),
@@ -84,7 +84,6 @@ class Common extends StatelessWidget {
           return const Text('There is some error');
         }
         return const Center(child:  CircularProgressIndicator());
-
       },
     );
   }

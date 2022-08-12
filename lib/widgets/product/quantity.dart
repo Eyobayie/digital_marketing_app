@@ -16,7 +16,7 @@ class _ProductQuantityState extends State<ProductQuantity> {
   
    void reduceQuantity(){
     setState(() {
-      if(_counter<0){
+      if(_counter<1){
         _counter=1;
       }
       else{
