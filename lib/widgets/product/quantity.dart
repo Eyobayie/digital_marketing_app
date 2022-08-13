@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../providers/product/productdetailprovider.dart';
+
 
 class ProductQuantity extends StatefulWidget {
-  final int maximumProductQuantity;
-  const ProductQuantity({Key? key,required this.maximumProductQuantity}) : super(key: key);
+   ProductDetail? productDetail;
+   ProductQuantity({Key? key, this.productDetail}) : super(key: key);
 
   @override
   State<ProductQuantity> createState() => _ProductQuantityState();
@@ -26,11 +28,11 @@ class _ProductQuantityState extends State<ProductQuantity> {
    }
    void increaseQuantity(){
     setState(() {
-      if(_counter<widget.maximumProductQuantity){
+      if(_counter<int.parse(widget.productDetail!.quantity)){
               _counter++;
       }
       else{
-        _counter=widget.maximumProductQuantity;
+        _counter=int.parse(widget.productDetail!.quantity);
       }
     });
    }

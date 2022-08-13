@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:rynsysengineering/providers/product/productdetailprovider.dart';
 import 'package:rynsysengineering/widgets/product/detail.dart';
 import 'package:rynsysengineering/widgets/product/quantity.dart';
 import 'package:rynsysengineering/widgets/product/review.dart';
 
 class ProductTabs extends StatefulWidget {
-  final String ProductDetail;
-  final int maximumProductQuantity;
-  const ProductTabs(
+  ProductDetail? productDetail;
+  // final String ProductDetail;
+  // final int maximumProductQuantity;
+   ProductTabs(
       {Key? key,
-      required this.ProductDetail,
-      required this.maximumProductQuantity})
+     required this.productDetail})
       : super(key: key);
   @override
   State<ProductTabs> createState() => _ProductTabsState();
@@ -24,8 +25,8 @@ class _ProductTabsState extends State<ProductTabs> {
     // TODO: implement initState
     super.initState();
     tabList = [
-      ProductQuantity(maximumProductQuantity: widget.maximumProductQuantity),
-      ProductDetailWidget(detail: widget.ProductDetail),
+      ProductQuantity(productDetail: widget.productDetail),
+      ProductDetailWidget(productDetail:widget.productDetail),
       const ProductReview()
     ];
   }

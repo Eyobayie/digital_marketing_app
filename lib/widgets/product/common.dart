@@ -76,7 +76,7 @@ class Common extends StatelessWidget {
           ),),
          const SizedBox(height: 10,),
            Divider(color: Colors.black.withOpacity(0.7), thickness: 1),
-           ProductTabs( maximumProductQuantity: int.parse(snapshot.data!.quantity), ProductDetail: snapshot.data!.detail),
+           ProductTabs( productDetail: snapshot.data),
         ],
         );
         }

@@ -7,8 +7,8 @@ import 'package:rynsysengineering/providers/product/cart_list.dart';
 import '../models/cart_item_model.dart';
 
 class CartScreen extends StatefulWidget {
-   CartScreen({Key? key}) : super(key: key);
-
+   const CartScreen({Key? key}) : super(key: key);
+static const cartRoute='cartRoute';
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
@@ -58,7 +58,7 @@ List<CartItem> cartList=cart.cartItems.values.toList();
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
           Text('Shopping Cart',style: bigTextStyle,),
-          Text(cartList.length.toString(),style:bigTextStyle),
+          Text(cart.getItemCount.toString(),style:bigTextStyle),
         ],),
         SizedBox(
           height: MediaQuery.of(context).size.height-100,
@@ -81,8 +81,8 @@ List<CartItem> cartList=cart.cartItems.values.toList();
                         Text(cartList[index].name,style:smallTextStyle),
                         Row(children: [
                                        Icon(Icons.star,color: iconColor,),
-                                           Icon(Icons.star,color: iconColor,),
-                                           Icon(Icons.star,color: iconColor,),
+                                       Icon(Icons.star,color: iconColor,),
+                                       Icon(Icons.star,color: iconColor,),
                                            Icon(Icons.star,color: iconColor,),
                                            Icon(Icons.star,color: iconColor,),  
                                  ],),
@@ -94,8 +94,10 @@ List<CartItem> cartList=cart.cartItems.values.toList();
                   flex: 0,
                    child: Column(
                     children: [
-                      IconButton(onPressed: (){increaseProduct();}, icon: const FaIcon(FontAwesomeIcons.plus)),
-                                 Container(
+                      IconButton(onPressed:() {
+                       increaseProduct();
+                        }, icon: const FaIcon(FontAwesomeIcons.plus)),
+                        Container(
                       height: 30,
                       width: 40,
                       decoration: BoxDecoration(
@@ -104,10 +106,10 @@ List<CartItem> cartList=cart.cartItems.values.toList();
                             style: BorderStyle.solid,
                             width: 1,
                           ),
-                          borderRadius: BorderRadius.circular(5)),
+                          borderRadius:BorderRadius.circular(5)),
                       child:  Center(
                           child: Text(
-                        '$_counter',
+                       cartList[index].quantity,
                         style:const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
                       ))),
                        IconButton(onPressed: (){decreaseProduct();}, icon: const FaIcon(FontAwesomeIcons.minus)),
@@ -138,10 +140,10 @@ List<CartItem> cartList=cart.cartItems.values.toList();
                    )),
                 ),
             ),
-              Divider(thickness: 1,color:Colors.black.withOpacity(0.7))
+              Divider(thickness: 1,color:Colors.black.withOpacity(0.4))
               ],
             ),
-            ),
+          ),
          ),
       ],),
     );

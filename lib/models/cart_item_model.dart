@@ -12,5 +12,5 @@ class CartItem{
            required this.price,
            required this.quantity,
            required this.imgUrl,
-      });
+  });
 }

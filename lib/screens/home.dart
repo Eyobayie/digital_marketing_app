@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rynsysengineering/constants/text_decorators.dart';
+import 'package:rynsysengineering/screens/cart_screen.dart';
 import 'package:rynsysengineering/util/home_products_service.dart';
 import 'package:rynsysengineering/widgets/featured_product.dart';
 import 'package:rynsysengineering/widgets/search_field.dart';
+import '../providers/product/cart_list.dart';
 import '../widgets/badge.dart';
 import '../widgets/shop.dart';
 import '../widgets/sliders.dart';
@@ -39,12 +42,21 @@ class _HomeState extends State<Home> {
           .copyWith(color:Colors.green,
           ))],),
       actions: [
-        Badge(
-        child:IconButton(icon:const Icon(Icons.notifications,size: 30,),
-             onPressed: (){
-             },
-             ),
-        value: '20',
+        Consumer<Cart>(
+          builder: (context,cart,_)=>
+           Badge(
+          child:IconButton(icon:const Icon(Icons.notifications_outlined,size: 30,),
+               onPressed: (){
+                Navigator.of(context).pushNamed(CartScreen.cartRoute); 
+               },
+               ),
+          value: cart.getItemCount.toString(),
+          labelStyle: const TextStyle(
+            color: Colors.red,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            ),
+          ),
         )],
       ),
       body: Column(

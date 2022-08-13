@@ -15,10 +15,9 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
    final TextStyle labelStyle=const TextStyle(fontSize:20);
   List<Widget> widgetList= [
     const Home(),
-    Container(child:const Center(child: Text('Shop locattor'))),
-    CartScreen(),
+    //Container(child:const Center(child: Text('Shop locattor'))),
+    const CartScreen(),
     AccountScreen(),
-    //Container(child:const Center(child: Text('Account'))),
     ];
   @override
   Widget build(BuildContext context) {
@@ -28,8 +27,8 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
         selectedItemColor: Colors.deepOrange,
         unselectedItemColor: Colors.white,
         backgroundColor:const  Color.fromARGB(255, 7, 42, 70),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         selectedFontSize:20,
         unselectedFontSize: 20,
         iconSize: 30,
@@ -45,9 +44,9 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
           icon: Icon(Icons.home_outlined),
           label:'Home'
           ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.location_on_outlined),
-          label:'Shop locattor',),
+        // BottomNavigationBarItem(
+        //   icon: Icon(Icons.location_on_outlined),
+        //   label:'Shop locattor',),
         BottomNavigationBarItem(
           icon: Icon(Icons.shopping_cart),
           label:'Cart'),

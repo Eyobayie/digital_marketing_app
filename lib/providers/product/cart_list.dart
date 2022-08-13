@@ -16,8 +16,8 @@ class Cart with ChangeNotifier{
     });
     return total;
 }
- void removeCartItem(String productId){
-    _cartItems.remove(productId);
+ void removeCartItem(String cartId){
+    _cartItems.remove(cartId);
     print(_cartItems.length);
     notifyListeners();
  }
@@ -37,7 +37,7 @@ class Cart with ChangeNotifier{
                      price: existingItem.price,
                      quantity: qty.toString())
                    );
-                 }
+              }
        else{
          _cartItems.putIfAbsent(productId, () => CartItem(
              cartId: DateTime.now().toString(),
