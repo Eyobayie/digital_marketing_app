@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rynsysengineering/providers/product/cart_list.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
 import 'package:rynsysengineering/screens/product_list.dart';
 import 'package:rynsysengineering/util/product_detail_service.dart';
@@ -51,7 +53,7 @@ class FeaturedProduct extends StatelessWidget {
                           crossAxisCount: 2,
                           childAspectRatio: ((2 / 3) * 0.9),
                         ),
-                        itemBuilder: ((context, index) => Container(
+                        itemBuilder: ((context, index) => int.parse(snapshot.data!.products[index].isFeatured)==1?Container(
                               margin: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 7),
                               decoration: BoxDecoration(
@@ -70,8 +72,7 @@ class FeaturedProduct extends StatelessWidget {
                                     ProductDetailScreen.productDetailRoute,
                                     arguments:snapshot.data!.products[index].id);
                                    },
-                                child: int.parse(snapshot.data!.products[index].isFeatured)==1?
-                                Column(
+                                child: Column(
                                   children: [
                                     Expanded(
                                       flex: 3,
@@ -115,35 +116,49 @@ class FeaturedProduct extends StatelessWidget {
                                     const SizedBox(
                                       height:10,
                                     ),
-                                    Container(
-                                      width: 130,
-                                      height:
-                                          MediaQuery.of(context).size.height * 0.05,
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: const Center(
-                                          child: Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(horizontal: 5),
-                                        child: Text(
-                                          'Add to cart',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 20),
+                                    Consumer<Cart>(
+                                      builder: (context,cart,child)=>
+                                       InkWell(
+                                        onTap: (){
+                                          cart.addItem(
+                                            snapshot.data!.products[index].id.toString(), 
+                                            snapshot.data!.products[index].name,
+                                            snapshot.data!.products[index].price,
+                                            snapshot.data!.products[index].images.path,
+                                            );
+                                        },
+                                        child: Container(
+                                          width: 130,
+                                          height:
+                                              MediaQuery.of(context).size.height * 0.05,
+                                          decoration: BoxDecoration(
+                                            color: Colors.orange,
+                                            borderRadius: BorderRadius.circular(10),
+                                          ),
+                                          child: const Center(
+                                              child: Padding(
+                                            padding:
+                                                EdgeInsets.symmetric(horizontal: 5),
+                                            child: Text(
+                                              'Add to cart',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 20),
+                                            ),
+                                          )),
                                         ),
-                                      )),
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 3,
                                     ),
                                   ],
-                                  ): 
-                                Container(), 
+                                  )
                               ),
-                          ))),
+                             ):Container()
+                          )
+                       ),
                   ),
                 ],
               );
@@ -152,7 +167,6 @@ class FeaturedProduct extends StatelessWidget {
               return Text(snapshot.error.toString());
             }
             }
-            
             return const Center(child:  CircularProgressIndicator());
           },
         ),

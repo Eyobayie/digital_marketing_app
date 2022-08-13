@@ -1,9 +1,10 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rynsysengineering/widgets/product/detail.dart';
+import 'package:provider/provider.dart';
+import 'package:rynsysengineering/providers/product/cart_list.dart';
+
+import '../models/cart_item_model.dart';
 
 class CartScreen extends StatefulWidget {
    CartScreen({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
 TextStyle bigTextStyle=const TextStyle(fontSize: 20,fontWeight: FontWeight.w500);
 TextStyle smallTextStyle=const TextStyle(fontSize: 18,fontWeight: FontWeight.w400);
+Color iconColor= Colors.orange;
 int _counter=1;
 void increaseProduct(){
   setState(() {
@@ -34,6 +36,8 @@ void decreaseProduct(){
 
   @override
   Widget build(BuildContext context) {
+    final Cart cart=Provider.of<Cart>(context);
+List<CartItem> cartList=cart.cartItems.values.toList();
     return Scaffold(
       backgroundColor:Colors.white,
       appBar: AppBar(
@@ -54,45 +58,35 @@ void decreaseProduct(){
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
           Text('Shopping Cart',style: bigTextStyle,),
-          Text('3 Products',style:bigTextStyle),
+          Text(cartList.length.toString(),style:bigTextStyle),
         ],),
         SizedBox(
           height: MediaQuery.of(context).size.height-100,
           child: ListView.builder(
-            itemCount: 5,
+            itemCount: cart.cartItems.length,
             itemBuilder: (context, index) => Column(
               crossAxisAlignment:CrossAxisAlignment.end,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:  [
-                  Image.asset('assets/images/solar panel3.jpg',width: 120,
-                  height: 120,
-                  ),
+                    Image.network(cartList[index].imgUrl,width: 120, height: 120,),
+                  // Image.asset('assets/images/solar panel3.jpg',width: 120,
+                  // height: 120,
+                  // ),
                   Expanded(
                     flex: 3,
                     child: Column(
                       children: [
-                        Text('portable energy portable energy',style:smallTextStyle),
+                        Text(cartList[index].name,style:smallTextStyle),
                         Row(children: [
-                                 IconButton(
-                                          icon: const Icon(Icons.star),
-                                          onPressed: () {
-                                          },
-                                          color: Colors.orange,
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(Icons.star),
-                                          onPressed: () {},
-                                          color: Colors.orange,
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(Icons.star),
-                                          onPressed: () {},
-                                          color: Colors.orange,
-                                      ),
+                                       Icon(Icons.star,color: iconColor,),
+                                           Icon(Icons.star,color: iconColor,),
+                                           Icon(Icons.star,color: iconColor,),
+                                           Icon(Icons.star,color: iconColor,),
+                                           Icon(Icons.star,color: iconColor,),  
                                  ],),
-                            Text('2000 ETB',style: bigTextStyle,),
+                            Text(cartList[index].price +' ETB',style: bigTextStyle,),
                             ],
                          ),
                   ),
@@ -120,25 +114,30 @@ void decreaseProduct(){
                     ],),
                  ),
                 ],),
-            Container(
-              width: 160,
-              height: MediaQuery.of(context).size.height*0.06,
-              decoration: BoxDecoration(
-                color: Colors.greenAccent,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Center(
-                  child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  'Remove',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                   ),
-                 )),
-              ),
+            InkWell(
+              onTap: (){
+                cart.removeCartItem(cartList[index].cartId);
+              },
+              child: Container(
+                width: 160,
+                height: MediaQuery.of(context).size.height*0.06,
+                decoration: BoxDecoration(
+                  color: Colors.greenAccent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Center(
+                    child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: Text(
+                    'Remove',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20),
+                     ),
+                   )),
+                ),
+            ),
               Divider(thickness: 1,color:Colors.black.withOpacity(0.7))
               ],
             ),

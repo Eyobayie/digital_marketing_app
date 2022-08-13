@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rynsysengineering/providers/product/cart_list.dart';
 import 'package:rynsysengineering/screens/bottom_navigator.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
 import 'package:rynsysengineering/screens/product_list.dart';
@@ -11,20 +13,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'RENYSYS ENGINEERING',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        inputDecorationTheme:const InputDecorationTheme(
-          filled: true, fillColor: Colors.white,
+    return ChangeNotifierProvider(
+      create:(context)=>Cart(),
+      child: MaterialApp(
+        title: 'RENYSYS ENGINEERING',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          inputDecorationTheme:const InputDecorationTheme(
+            filled: true, fillColor: Colors.white,
+            ),
           ),
-        ),
-      home: const BottomNavigatorScreen(),
-      routes: {
-        ProductDetailScreen.productDetailRoute:(context)=>const ProductDetailScreen(),
-        ProductListScreen.productListRoute:(context)=> ProductListScreen(),
-      },
+        home: const BottomNavigatorScreen(),
+        routes: {
+          ProductDetailScreen.productDetailRoute:(context)=>const ProductDetailScreen(),
+          ProductListScreen.productListRoute:(context)=> ProductListScreen(),
+        },
+      ),
     );
   }
 }
