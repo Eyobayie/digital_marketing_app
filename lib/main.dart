@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rynsysengineering/providers/product/cart_list.dart';
 import 'package:rynsysengineering/screens/bottom_navigator.dart';
 import 'package:rynsysengineering/screens/cart_screen.dart';
+import 'package:rynsysengineering/screens/checkout_screen.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
 import 'package:rynsysengineering/screens/product_list.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             filled: true, fillColor: Colors.white,
             ),
           ),
-        home: const BottomNavigatorScreen(),
+        home: const checkoutScreen(),
         routes: {
           ProductDetailScreen.productDetailRoute:(context)=>const ProductDetailScreen(),
           ProductListScreen.productListRoute:(context)=> ProductListScreen(),
