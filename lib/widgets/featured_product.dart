@@ -74,27 +74,25 @@ class FeaturedProduct extends StatelessWidget {
                                    },
                                 child: Column(
                                   children: [
-                                    Expanded(
-                                      flex: 3,
-                                      child: Container(
-                                        height: 150,
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(10),
-                                            image:  DecorationImage(
-                                              image: NetworkImage(snapshot.data!.products[index].images.path),
-                                              fit: BoxFit.cover,
-                                            )),
-                                      ),
-                                    ),
-                                     Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        snapshot.data!.products[index].name,
-                                        style: const TextStyle(fontSize: 18),
-                                      ),
-                                    ),
                                     Container(
+                                      height: 150,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          image:  DecorationImage(
+                                            image: NetworkImage(snapshot.data!.products[index].images.path),
+                                            fit: BoxFit.cover,
+                                          )),
+                                    ),
+                                   const SizedBox(height: 5,),
+                                     Text(
+                                      snapshot.data!.products[index].name.length>=31
+                                      ? snapshot.data!.products[index].name.substring(0,30)
+                                      :snapshot.data!.products[index].name,
+                                       style: const TextStyle(fontSize: 18),
+                                     ),
+                                   const SizedBox(height: 5,),
+                                    SizedBox(
                                       height: 30,
                                       child: Row(
                                         children: [
@@ -106,6 +104,7 @@ class FeaturedProduct extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                   const SizedBox(height: 5,),
                                      Text( snapshot.data!.products[index].price.toString()+ ' ETB',
                                         style: const TextStyle(
                                             fontSize: 20,
@@ -114,7 +113,7 @@ class FeaturedProduct extends StatelessWidget {
                                     //     height: 5,
                                     //   ),
                                     const SizedBox(
-                                      height:10,
+                                      height:5,
                                     ),
                                     Consumer<Cart>(
                                       builder: (context,cart,child)=>
@@ -170,7 +169,7 @@ class FeaturedProduct extends StatelessWidget {
             return const Center(child:  CircularProgressIndicator());
           },
         ),
-      ]),
+      ],),
     );
   }
 }

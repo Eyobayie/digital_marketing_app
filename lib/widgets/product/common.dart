@@ -77,9 +77,9 @@ class Common extends StatelessWidget {
          const SizedBox(height: 10,),
            Divider(color: Colors.black.withOpacity(0.7), thickness: 1),
            ProductTabs( productDetail: snapshot.data),
-        ],
-        );
-        }
+               ],
+            );
+          }
         else if(snapshot.hasError){
           return const Text('There is some error');
         }

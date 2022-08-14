@@ -27,7 +27,7 @@ class ProductDetailWidget extends StatelessWidget {
                     productDetail!.id.toString(),
                     productDetail!.name,
                     productDetail!.price,
-                    productDetail!.allPhotos.imageList![1].path,
+                    productDetail!.allPhotos.imageList![0].path,
                     );
                 },
                 child: Container(

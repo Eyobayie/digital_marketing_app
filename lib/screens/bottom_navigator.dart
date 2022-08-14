@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rynsysengineering/screens/account.dart';
 import 'package:rynsysengineering/screens/cart_screen.dart';
 import 'package:rynsysengineering/screens/home.dart';
+import 'package:rynsysengineering/widgets/badge.dart';
+
+import '../providers/product/cart_list.dart';
 
 class BottomNavigatorScreen extends StatefulWidget {
   const BottomNavigatorScreen({Key? key}) : super(key: key);
@@ -39,8 +43,8 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
           initialIndex=selectedIndex;
           });
         },
-        items: const[
-        BottomNavigationBarItem(
+        items: [
+        const BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
           label:'Home'
           ),
@@ -48,9 +52,20 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
         //   icon: Icon(Icons.location_on_outlined),
         //   label:'Shop locattor',),
         BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
+          icon: Consumer<Cart>(
+          builder: (context,cart,_)=>
+           Badge(
+          child:const Icon(Icons.shopping_cart_outlined),
+          value: cart.getItemCount.toString(),
+          labelStyle: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+          //icon: Icon(Icons.shopping_cart),
           label:'Cart'),
-        BottomNavigationBarItem(
+       const BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label:'Accont'),
       ]),

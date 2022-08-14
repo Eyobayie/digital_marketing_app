@@ -184,29 +184,25 @@ class ProductListScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               Container(
-                                height: 10,
+                                margin: const EdgeInsets.symmetric(vertical:5),
+                                height: 150,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: NetworkImage(productList
+                                           .products[index].images.path),
+                                      fit: BoxFit.cover,
+                                    )),
                               ),
-                              Expanded(
-                                flex: 3,
-                                child: Container(
-                                  height: 150,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                        image: NetworkImage(productList
-                                            .products[index].images.path),
-                                        fit: BoxFit.cover,
-                                      )),
-                                ),
+                              const SizedBox(height:5),
+                              Text(
+                                productList.products[index].name.length>=31
+                                ?productList.products[index].name.substring(0,30)
+                                :productList.products[index].name,
+                                style: const TextStyle(fontSize: 18),
                               ),
-                              Expanded(
-                                flex: 2,
-                                child: Text(
-                                  productList.products[index].name,
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ),
+                                 const SizedBox(height: 5,),
                               SizedBox(
                                 height: 30,
                                 child: Center(
@@ -241,7 +237,7 @@ class ProductListScreen extends StatelessWidget {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
                               const SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               Consumer<Cart>(
                                 builder: (context, cart, child) => InkWell(

@@ -51,101 +51,132 @@ List<CartItem> cartList=cart.cartItems.values.toList();
         }, 
         icon: const Icon(Icons.arrow_back_ios,color: Colors.black,)),
       ),
-      body: ListView(
-        padding:const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-        children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+          margin:const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+        child: Column(
           children: [
-          Text('Shopping Cart',style: bigTextStyle,),
-          Text(cart.getItemCount.toString(),style:bigTextStyle),
-        ],),
-        SizedBox(
-          height: MediaQuery.of(context).size.height-100,
-          child: ListView.builder(
-            itemCount: cart.cartItems.length,
-            itemBuilder: (context, index) => Column(
-              crossAxisAlignment:CrossAxisAlignment.end,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children:  [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+            Text('Shopping Cart',style: bigTextStyle,),
+            Text(cart.getItemCount.toString(),style:bigTextStyle),
+          ],),
+          const SizedBox(height: 5,),
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart.cartItems.length,
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment:CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:  [
                     Image.network(cartList[index].imgUrl,width: 120, height: 120,),
-                  // Image.asset('assets/images/solar panel3.jpg',width: 120,
-                  // height: 120,
-                  // ),
-                  Expanded(
-                    flex: 3,
-                    child: Column(
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        children: [
+                          Text(cartList[index].name,style:smallTextStyle),
+                          Row(children: [
+                                         Icon(Icons.star,color: iconColor,),
+                                         Icon(Icons.star,color: iconColor,),
+                                         Icon(Icons.star,color: iconColor,),
+                                         Icon(Icons.star,color: iconColor,),
+                                         Icon(Icons.star,color: iconColor,),  
+                                   ],),
+                              Text(cartList[index].price +' ETB',style: bigTextStyle,),
+                              ],
+                           ),
+                    ),
+                   Expanded(
+                    flex: 0,
+                     child: Column(
                       children: [
-                        Text(cartList[index].name,style:smallTextStyle),
-                        Row(children: [
-                                       Icon(Icons.star,color: iconColor,),
-                                       Icon(Icons.star,color: iconColor,),
-                                       Icon(Icons.star,color: iconColor,),
-                                           Icon(Icons.star,color: iconColor,),
-                                           Icon(Icons.star,color: iconColor,),  
-                                 ],),
-                            Text(cartList[index].price +' ETB',style: bigTextStyle,),
-                            ],
-                         ),
+                        IconButton(onPressed:() {
+                         increaseProduct();
+                          }, icon: const FaIcon(FontAwesomeIcons.plus)),
+                          Container(
+                        height: 30,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black.withOpacity(0.6),
+                              style: BorderStyle.solid,
+                              width: 1,
+                            ),
+                            borderRadius:BorderRadius.circular(5)),
+                        child:  Center(
+                            child: Text(
+                         cartList[index].quantity,
+                          style:const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+                        ))),
+                         IconButton(onPressed: (){decreaseProduct();}, icon: const FaIcon(FontAwesomeIcons.minus)),
+                      ],),
+                   ),
+                  ],),
+              InkWell(
+                onTap: (){
+                  cart.removeCartItem(cartList[index].cartId);
+                },
+                child: Container(
+                  width: 160,
+                  height: MediaQuery.of(context).size.height*0.06,
+                  decoration: BoxDecoration(
+                    color: Colors.greenAccent,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                 Expanded(
-                  flex: 0,
-                   child: Column(
-                    children: [
-                      IconButton(onPressed:() {
-                       increaseProduct();
-                        }, icon: const FaIcon(FontAwesomeIcons.plus)),
-                        Container(
-                      height: 30,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black.withOpacity(0.6),
-                            style: BorderStyle.solid,
-                            width: 1,
-                          ),
-                          borderRadius:BorderRadius.circular(5)),
-                      child:  Center(
-                          child: Text(
-                       cartList[index].quantity,
-                        style:const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
-                      ))),
-                       IconButton(onPressed: (){decreaseProduct();}, icon: const FaIcon(FontAwesomeIcons.minus)),
-                    ],),
-                 ),
-                ],),
-            InkWell(
-              onTap: (){
-                cart.removeCartItem(cartList[index].cartId);
-              },
-              child: Container(
-                width: 160,
-                height: MediaQuery.of(context).size.height*0.06,
-                decoration: BoxDecoration(
-                  color: Colors.greenAccent,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Center(
-                    child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Text(
-                    'Remove',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20),
-                     ),
-                   )),
-                ),
-            ),
-              Divider(thickness: 1,color:Colors.black.withOpacity(0.4))
-              ],
+                  child: const Center(
+                      child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    child: Text(
+                      'Remove',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20),
+                       ),
+                     )),
+                  ),
+              ),
+                Divider(thickness: 1,color:Colors.black.withOpacity(0.4))
+                ],
+              ),
             ),
           ),
-         ),
-      ],),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(children: [
+                const Text('Total:',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                Text(cart.getTotalPrice.toString()),
+              ],),
+              InkWell(
+                onTap: (){
+                  
+                },
+                child: Container(
+                      width: MediaQuery.of(context).size.height*0.4,
+                      height: MediaQuery.of(context).size.height*0.065,
+                      decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Center(
+                        child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Text(
+                          'Checkout',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20),
+                           ),
+                         )),
+                      ),
+                 ),
+              ],),
+        ],),
+      ),
     );
   }
 }

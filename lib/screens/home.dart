@@ -52,7 +52,6 @@ class _HomeState extends State<Home> {
                ),
           value: cart.getItemCount.toString(),
           labelStyle: const TextStyle(
-            color: Colors.red,
             fontSize: 20,
             fontWeight: FontWeight.bold,
             ),

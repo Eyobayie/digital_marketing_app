@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/product/cart_list.dart';
 import '../../providers/product/productdetailprovider.dart';
 
 
@@ -104,23 +106,37 @@ class _ProductQuantityState extends State<ProductQuantity> {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          decoration: BoxDecoration(
-                            color: Colors.greenAccent,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Center(
-                              child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 40),
-                            child: Text(
-                              'Add to cart',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20),
+                        Consumer<Cart>(
+                          builder:(context,cart,_)=>
+                           InkWell(
+                            onTap: (){
+                              cart.addItem(
+                                widget.productDetail!.id.toString(),
+                                widget.productDetail!.name,
+                                widget.productDetail!.price, 
+                                widget.productDetail!.allPhotos.imageList![0].path,
+                                qty: _counter.toString(),
+                                );
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              decoration: BoxDecoration(
+                                color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Center(
+                                  child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 40),
+                                child: Text(
+                                  'Add to cart',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20),
+                                ),
+                              )),
                             ),
-                          )),
+                          ),
                         ),
                         Container(
                           height: MediaQuery.of(context).size.height * 0.06,
