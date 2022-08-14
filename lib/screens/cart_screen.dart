@@ -148,14 +148,15 @@ List<CartItem> cartList=cart.cartItems.values.toList();
             children: [
               Column(children: [
                 const Text('Total:',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                Text(cart.getTotalPrice.toString()),
+                const SizedBox(height: 8,),
+                Text(cart.getTotalPrice.toString(),style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               ],),
               InkWell(
                 onTap: (){
                   
                 },
                 child: Container(
-                      width: MediaQuery.of(context).size.height*0.4,
+                      width: MediaQuery.of(context).size.height*0.3,
                       height: MediaQuery.of(context).size.height*0.065,
                       decoration: BoxDecoration(
                         color: Colors.orange,
@@ -165,7 +166,7 @@ List<CartItem> cartList=cart.cartItems.values.toList();
                         child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 30),
                         child: Text(
-                          'Checkout',
+                           'Checkout',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,

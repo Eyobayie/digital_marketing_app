@@ -98,7 +98,7 @@ class AccountScreen extends StatelessWidget {
              title: Text('Shopping address'),
              ),
              Divider(thickness: 1,color: Colors.black.withOpacity(0.5),),
-                            const ListTile(leading:  Icon(Icons.location_on_outlined) ,
+              const ListTile(leading:  Icon(Icons.location_on_outlined) ,
              title: Text('Shopping address'),
             ),
             Divider(thickness: 1,color: Colors.black.withOpacity(0.5),),
@@ -106,7 +106,6 @@ class AccountScreen extends StatelessWidget {
              title: Text('Shopping address'),
              ),
              Divider(thickness: 1,color: Colors.black.withOpacity(0.5),),
-             
                 ],),
              ),
           ],
