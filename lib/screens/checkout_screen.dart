@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rynsysengineering/widgets/confirmation.dart';
 import 'package:rynsysengineering/widgets/delivery_address.dart';
 import 'package:rynsysengineering/widgets/login_form.dart';
 import 'package:rynsysengineering/widgets/payment.dart';
@@ -63,13 +64,11 @@ class checkoutScreen extends StatelessWidget {
               ),
           ]),
         ),
-        body:  TabBarView(children:[
-          const LoginForm(),
-          const DeliveryAddress(),
-          const PaymentWidget(),
-           Container(height: 500,
-          color: Colors.green,
-          ),
+        body: const TabBarView(children: [
+           LoginForm(),
+           DeliveryAddress(),
+           PaymentWidget(),
+           Confirmation(),
         ]),
       ),
     );

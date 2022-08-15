@@ -6,6 +6,7 @@ import 'package:rynsysengineering/screens/cart_screen.dart';
 import 'package:rynsysengineering/screens/checkout_screen.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
 import 'package:rynsysengineering/screens/product_list.dart';
+import 'package:rynsysengineering/widgets/confirmation.dart';
 
 void main() {
   runApp(const MyApp());

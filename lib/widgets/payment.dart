@@ -21,7 +21,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
     return Container(
       color: Colors.white,
       child: ListView(
-
+ padding:const EdgeInsets.symmetric(horizontal:10,),
         children: [
            ExpansionTile(
             title:  Text('Items',style: textStyle,),
@@ -31,12 +31,30 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 4,
                   itemBuilder: (context,index)=>
-                   ListTile(
-                      leading: Image.asset('assets/images/shop1.jpg'),
-                      title:  Text('solar panel',style:textStyle),
-                      subtitle:  Text('2',style: textStyle,),
-                      trailing:  Text('2000 ETB',style: textStyle,),
+                   Column(
+                     children: [
+                       Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(color: Colors.grey.withOpacity(0.3),
+                            offset: const Offset(1,1),
+                            blurRadius: 0,
+                            spreadRadius: 0,
+                            ),
+                          ],
+                          ),
+                         child: ListTile(
+                            leading: Image.asset('assets/images/shop1.jpg'),
+                            title:  Text('solar panel',style:textStyle),
+                            subtitle:  Text('2',style: textStyle,),
+                            trailing:  Text('2000 ETB',style: textStyle,),
                   ),
+                       ),
+                       const SizedBox(height: 15,),
+                     ],
+                   ),
                 ),
 
               
@@ -107,10 +125,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
            ],),
            const SizedBox(height: 20),
            Container(
-            width: 200,
+            width: 250,
             height: 40,
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
               color: Colors.orange,
+              borderRadius: BorderRadius.circular(10),
             ),
             child: const Center(
               child: Text('PERCHASE ORDER-3000 ETB',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),),
