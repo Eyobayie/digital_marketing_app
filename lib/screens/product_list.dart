@@ -8,6 +8,7 @@ import 'package:rynsysengineering/util/home_products_service.dart';
 import 'package:rynsysengineering/widgets/search_field.dart';
 
 import '../util/product_detail_service.dart';
+import '../widgets/button_container.dart';
 
 class ProductListScreen extends StatelessWidget {
   ProductListScreen({Key? key}) : super(key: key);
@@ -249,27 +250,7 @@ class ProductListScreen extends StatelessWidget {
                                       productList.products[index].images.path,
                                       );
                                   },
-                                  child: Container(
-                                    width: 130,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    decoration: BoxDecoration(
-                                      color: Colors.orange,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: const Center(
-                                        child: Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 5),
-                                      child: Text(
-                                        'Add to cart',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 20),
-                                      ),
-                                    )),
-                                  ),
+                                  child:const ButtonContainer(color: Colors.orange, title: 'Add to cart')
                                 ),
                               ),
                               const SizedBox(

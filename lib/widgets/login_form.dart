@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rynsysengineering/widgets/button_container.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -85,55 +86,17 @@ class LoginForm extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: MediaQuery.of(context).size.height * 0.15,
-                    height: MediaQuery.of(context).size.height * 0.065,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Center(
-                        child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'SIGN IN',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                      ),
-                    )),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: MediaQuery.of(context).size.height * 0.35,
-                    height: MediaQuery.of(context).size.height * 0.065,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 43, 117, 46),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Center(
-                        child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'CHECKOUT AS GUEST',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                      ),
-                    )),
-                  ),
-                ),
-              ],
-            )
+            InkWell(
+              onTap: () {},
+              child:const ButtonContainer(color: Colors.orange, title: 'SIGN IN')
+            ),
+             Row(
+               children: [
+                 const Text('have not account yet?',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
+                 Text('Register',style: TextStyle(color: Colors.blue.shade900),),
+
+               ],
+             )
           ],
         )),
       ),] 

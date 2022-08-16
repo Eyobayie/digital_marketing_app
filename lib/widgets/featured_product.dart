@@ -4,6 +4,7 @@ import 'package:rynsysengineering/providers/product/cart_list.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
 import 'package:rynsysengineering/screens/product_list.dart';
 import 'package:rynsysengineering/util/product_detail_service.dart';
+import 'package:rynsysengineering/widgets/button_container.dart';
 
 import '../providers/product/product.dart';
 import '../util/home_products_service.dart';
@@ -126,27 +127,7 @@ class FeaturedProduct extends StatelessWidget {
                                             snapshot.data!.products[index].images.path,
                                             );
                                         },
-                                        child: Container(
-                                          width: 130,
-                                          height:
-                                              MediaQuery.of(context).size.height * 0.05,
-                                          decoration: BoxDecoration(
-                                            color: Colors.orange,
-                                            borderRadius: BorderRadius.circular(10),
-                                          ),
-                                          child: const Center(
-                                              child: Padding(
-                                            padding:
-                                                EdgeInsets.symmetric(horizontal: 5),
-                                            child: Text(
-                                              'Add to cart',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 20),
-                                            ),
-                                          )),
-                                        ),
+                                        child: const ButtonContainer(color: Colors.orange, title: 'Add to cart')
                                       ),
                                     ),
                                     const SizedBox(

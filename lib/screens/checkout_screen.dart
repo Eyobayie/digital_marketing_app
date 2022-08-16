@@ -38,6 +38,7 @@ class checkoutScreen extends StatelessWidget {
             indicatorColor: Colors.white,
             indicatorSize: TabBarIndicatorSize.tab,
             isScrollable: true,
+            labelStyle: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),
             labelColor: Colors.deepOrange,
             unselectedLabelColor: Colors.black,
             tabs:[

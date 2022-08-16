@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:rynsysengineering/providers/product/cart_list.dart';
 import 'package:rynsysengineering/screens/checkout_screen.dart';
+import 'package:rynsysengineering/widgets/button_container.dart';
 
 import '../models/cart_item_model.dart';
 
@@ -160,25 +161,7 @@ class _CartScreenState extends State<CartScreen> {
                             onTap: () {
                               cart.removeCartItem(cartList[index].cartId);
                             },
-                            child: Container(
-                              width: 160,
-                              height: MediaQuery.of(context).size.height * 0.06,
-                              decoration: BoxDecoration(
-                                color: const Color(0xff84BD3A),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: const Center(
-                                  child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 40),
-                                child: Text(
-                                  'Remove',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 20),
-                                ),
-                              )),
-                            ),
+                            child:const ButtonContainer(color: Color(0xff84BD3A), title: 'Revove') ,
                           ),
                           Divider(
                               thickness: 1,
@@ -222,25 +205,7 @@ class _CartScreenState extends State<CartScreen> {
                   onTap: () {
                     Navigator.of(context).pushNamed(checkoutScreen.routeName);
                   },
-                  child: Container(
-                    width: MediaQuery.of(context).size.height * 0.3,
-                    height: MediaQuery.of(context).size.height * 0.065,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Center(
-                        child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Text(
-                        'Checkout',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                      ),
-                    )),
-                  ),
+                  child: const ButtonContainer(color: Colors.orange, title: 'Checkout',)
                 ),
               ],
             ),

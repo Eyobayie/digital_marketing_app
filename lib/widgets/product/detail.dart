@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:rynsysengineering/providers/product/productdetailprovider.dart';
 
 import '../../providers/product/cart_list.dart';
+import '../button_container.dart';
 class ProductDetailWidget extends StatelessWidget {
   ProductDetail? productDetail;
     ProductDetailWidget({ Key? key,  this.productDetail}) : super(key: key);
@@ -30,44 +31,14 @@ class ProductDetailWidget extends StatelessWidget {
                     productDetail!.allPhotos.imageList![0].path,
                     );
                 },
-                child: Container(
-                  height: MediaQuery.of(context).size.height*0.06,
-                  decoration: BoxDecoration(
-                    color:const Color(0xff84BD3A),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                      child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    child: Text(
-                      'Add to cart',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20),
-                    ),
-                  )),
-                ),
+                child:  const ButtonContainer(
+                    color: Color(0xff84BD3A), title: 'Add to cart'),
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height*0.06,
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Center(
-                  child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  'Buy now',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20),
-                ),
-              ),),
-            ),
+            const ButtonContainer(
+              color: Colors.orange,
+              title: 'Buy know',
+            )
           ]),
        ],
     );
