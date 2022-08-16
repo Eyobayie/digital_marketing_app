@@ -6,50 +6,10 @@ class ImageSliders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    List<Widget> imageList=[
-Container(
-  height: 150,
-  width: double.infinity,
-  decoration:  BoxDecoration(
-    borderRadius:BorderRadius.circular(10),
-      image: const DecorationImage(
-      image: AssetImage(
-      'assets/images/solar panel5.jpg',
-    ),
-    fit: BoxFit.cover,
-  )),),
-        Container(
-          height: 150,
-          width: double.infinity,
-          decoration:  BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-              image: const DecorationImage(
-              image: AssetImage(
-              'assets/images/solar panel6.jpg',
-            ),
-            fit: BoxFit.cover,
-          )),),
-        Container(
-          height: 150,
-          width: double.infinity,
-          decoration:  BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-              image: const DecorationImage(
-              image: AssetImage(
-              'assets/images/solar panel7.jpg',
-            ),
-            fit: BoxFit.cover,
-          )),),
-        Container(
-          height: 150,
-          width: double.infinity,
-          decoration:  BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-              image: const DecorationImage(
-              image: AssetImage(
-              'assets/images/solar panel8.jpg',
-            ),
-            fit: BoxFit.cover,
-          )),),
+imageContainer('assets/images/home1.jpg'),
+imageContainer('assets/images/home2.jpg'),
+imageContainer('assets/images/home3.jpg'),
+imageContainer('assets/images/home4.jpg'),
   ];
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -75,5 +35,18 @@ Container(
             // onDotClicked: (index){
             // },
     ),]);
+  }
+  Widget imageContainer(String assetName){
+    return  Container(
+  height: 150,
+  width: double.infinity,
+  decoration:  BoxDecoration(
+    borderRadius:BorderRadius.circular(10),
+  ),
+    child:Image.asset(assetName,
+    fit: BoxFit.cover,
+    width:double.infinity,
+    ),
+   );
   }
 }

@@ -30,7 +30,7 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.deepOrange,
         unselectedItemColor: Colors.white,
-        backgroundColor:const  Color.fromARGB(255, 7, 42, 70),
+        backgroundColor:const  Color(0xff062539),
         showSelectedLabels: false,
         showUnselectedLabels: false,
         selectedFontSize:20,
@@ -43,8 +43,8 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
           initialIndex=selectedIndex;
           });
         },
-        items: [
-        const BottomNavigationBarItem(
+        items:const [
+         BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
           label:'Home'
           ),
@@ -52,20 +52,9 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
         //   icon: Icon(Icons.location_on_outlined),
         //   label:'Shop locattor',),
         BottomNavigationBarItem(
-          icon: Consumer<Cart>(
-          builder: (context,cart,_)=>
-           Badge(
-          child:const Icon(Icons.shopping_cart_outlined),
-          value: cart.getItemCount.toString(),
-          labelStyle: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-          //icon: Icon(Icons.shopping_cart),
+          icon: Icon(Icons.shopping_cart_outlined),
           label:'Cart'),
-       const BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label:'Accont'),
       ]),

@@ -27,7 +27,7 @@ class _ProductTabsState extends State<ProductTabs> {
     tabList = [
       ProductQuantity(productDetail: widget.productDetail),
       ProductDetailWidget(productDetail:widget.productDetail),
-      const ProductReview()
+     ProductReview(productDetail: widget.productDetail,)
     ];
   }
 

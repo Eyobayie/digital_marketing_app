@@ -8,7 +8,7 @@ class SearchField extends StatelessWidget {
    double textFieldHeight;
   SearchField(
       {Key? key,
-       this.color=const Color.fromARGB(255, 7, 42, 70),
+       this.color=const  Color(0xff062539),
        this.width=400,
        this.containerHeight=70.0,
        this.textFieldHeight=60,

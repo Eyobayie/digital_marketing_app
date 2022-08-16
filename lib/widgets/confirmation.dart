@@ -9,39 +9,44 @@ class Confirmation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 40),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const CircleAvatar(
-            backgroundColor: Color(0xff84BD3A),
-            radius: 50,
-            child: Icon(
-              Icons.check,
-              color: Color(0xffFF7E00),
-              size: 100,
+    return Column(
+      children: [
+        const Divider(color: Colors.black,thickness: 3,),
+        Container(
+          color: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 60),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircleAvatar(
+                backgroundColor: Color(0xff84BD3A),
+                radius: 50,
+                child: Icon(
+                  Icons.check,
+                  color: Color(0xffFF7E00),
+                  size: 100,
 
-            ),
+                ),
+              ),
+              const SizedBox(height: 20,),
+               Text('Order placed successfully',style: bigStyle,),
+              const SizedBox(
+                height: 10,
+              ),
+               Text(
+                  'Congratulations! Your order has been placed. You can track your order number #303030',style: smallStyle,),
+              const SizedBox(
+                height: 20,
+              ),
+              buttonContainer('Continue shopping', Colors.orange),
+              const SizedBox(
+                height: 15,
+              ),
+              buttonContainer('Track order', const Color(0xff062539)),
+            ],
           ),
-          const SizedBox(height: 20,),
-           Text('Order placed successfully',style: bigStyle,),
-          const SizedBox(
-            height: 10,
-          ),
-           Text(
-              'Congratulations! Your order has been placed. You can track your order number #303030',style: smallStyle,),
-          const SizedBox(
-            height: 20,
-          ),
-          buttonContainer('Continue shopping', Colors.orange),
-          const SizedBox(
-            height: 15,
-          ),
-          buttonContainer('Track order', const Color(0xff062539)),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

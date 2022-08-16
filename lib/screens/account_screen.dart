@@ -35,8 +35,8 @@ class AccountScreen extends StatelessWidget {
               children: [
                 Row( 
                   children:[
-                  const CircleAvatar(
-                  backgroundImage:  AssetImage('assets/images/profile.jpg'),
+                   CircleAvatar(
+                  child: Image.asset("assets/images/profile.jpg"),
                   radius: 30,
                 ),
                 const SizedBox(width: 20,),

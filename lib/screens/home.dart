@@ -28,8 +28,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor:const  Color.fromARGB(255, 7, 42, 70),
-        shadowColor: const  Color.fromARGB(255, 7, 42, 70),
+        backgroundColor:const  Color(0xff062539),
+        shadowColor: const  Color(0xff062539),
         toolbarHeight: appBarHeight,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,18 +42,20 @@ class _HomeState extends State<Home> {
           .copyWith(color:Colors.green,
           ))],),
       actions: [
-        Consumer<Cart>(
-          builder: (context,cart,_)=>
-           Badge(
-          child:IconButton(icon:const Icon(Icons.notifications_outlined,size: 30,),
-               onPressed: (){
-                Navigator.of(context).pushNamed(CartScreen.cartRoute); 
-               },
-               ),
-          value: cart.getItemCount.toString(),
-          labelStyle: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        Container(
+          margin: const EdgeInsets.only(right: 20),
+          child: Consumer<Cart>(
+            builder: (context,cart,_)=>
+             Badge(
+            child:IconButton(icon:const Icon(Icons.shopping_cart_outlined,size: 30,),
+                 onPressed: (){
+                 },
+                 ),
+            value: cart.getItemCount.toString(),
+            labelStyle: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         )],

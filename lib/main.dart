@@ -27,11 +27,12 @@ class MyApp extends StatelessWidget {
             filled: true, fillColor: Colors.white,
             ),
           ),
-        home: const checkoutScreen(),
+        home: const BottomNavigatorScreen(),
         routes: {
           ProductDetailScreen.productDetailRoute:(context)=>const ProductDetailScreen(),
           ProductListScreen.productListRoute:(context)=> ProductListScreen(),
           CartScreen.cartRoute:(context) => const CartScreen(),
+          checkoutScreen.routeName:(context) => const checkoutScreen(),
         },
       ),
     );

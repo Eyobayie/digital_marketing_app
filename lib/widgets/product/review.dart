@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rynsysengineering/providers/product/cart_list.dart';
+import 'package:rynsysengineering/providers/product/productdetailprovider.dart';
 import 'package:rynsysengineering/widgets/product/review_list.dart';
 import 'package:rynsysengineering/widgets/search_field.dart';
 
 class ProductReview extends StatefulWidget {
-  const ProductReview({Key? key}) : super(key: key);
+  final ProductDetail? productDetail;
+  const ProductReview({Key? key, required this.productDetail}) : super(key: key);
 
   @override
   State<ProductReview> createState() => _ProductReviewState();
@@ -61,23 +65,35 @@ class _ProductReviewState extends State<ProductReview> {
                 right:0, 
                 left: 0,
                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                           Container(
-                             height: MediaQuery.of(context).size.height*0.06,
-                             decoration: BoxDecoration(
-                  color: Colors.greenAccent,
-                  borderRadius: BorderRadius.circular(10),
+                           Consumer<Cart>(
+                            builder:(context,cart,_)=>
+                             InkWell(
+                              onTap: (){
+                                cart.addItem(
+                                  widget.productDetail!.id.toString(), 
+                                  widget.productDetail!.name, 
+                                  widget.productDetail!.price, 
+                                  widget.productDetail!.allPhotos.imageList![0].path);
+                              },
+                               child: Container(
+                                 height: MediaQuery.of(context).size.height*0.06,
+                                 decoration: BoxDecoration(
+                                               color: const Color(0xff84BD3A),
+                                               borderRadius: BorderRadius.circular(10),
+                                 ),
+                                 child: const Center(
+                                                 child: Padding(
+                                               padding: EdgeInsets.symmetric(horizontal: 40),
+                                               child: Text(
+                                                 'Add to cart',
+                                                 style: TextStyle(
+                                                     color: Colors.white,
+                                                     fontWeight: FontWeight.w700,
+                                                     fontSize: 20),
+                                               ),
+                                 )),
+                               ),
                              ),
-                             child: const Center(
-                    child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Text(
-                    'Add to cart',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20),
-                  ),
-                             )),
                            ),
                            Container(
                              height: MediaQuery.of(context).size.height*0.06,

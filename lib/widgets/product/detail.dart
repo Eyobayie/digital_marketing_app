@@ -33,7 +33,7 @@ class ProductDetailWidget extends StatelessWidget {
                 child: Container(
                   height: MediaQuery.of(context).size.height*0.06,
                   decoration: BoxDecoration(
-                    color: Colors.greenAccent,
+                    color:const Color(0xff84BD3A),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Center(

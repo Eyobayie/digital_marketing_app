@@ -11,6 +11,7 @@ import 'package:rynsysengineering/widgets/payment.dart';
 class checkoutScreen extends StatelessWidget {
   const checkoutScreen({Key? key}) : super(key: key);
   final textStyle = const TextStyle(fontSize: 23, fontWeight: FontWeight.bold);
+  static const routeName='checkoutRoute';
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,9 @@ class checkoutScreen extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               icon: const Icon(Icons.arrow_back_ios,
                 color: Colors.black,
                 size: 25,

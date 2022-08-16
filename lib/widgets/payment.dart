@@ -23,6 +23,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
       child: ListView(
  padding:const EdgeInsets.symmetric(horizontal:10,),
         children: [
+         const Divider(color: Colors.black, thickness: 3,),
            ExpansionTile(
             title:  Text('Items',style: textStyle,),
             children: [
