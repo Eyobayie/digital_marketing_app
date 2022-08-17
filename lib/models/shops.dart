@@ -40,7 +40,7 @@ class Shop{
           zone: jsonData['zone'], 
           woreda: jsonData['woreda'], 
           firstName: jsonData['first_name'],
-          lastName: jsonData['lastName'], 
+          lastName: jsonData['last_name'], 
           shopStatus: jsonData['shop_status'], 
           city: jsonData['city']);
     }

@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:rynsysengineering/widgets/button_container.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginForm extends StatefulWidget {
    LoginForm({Key? key}) : super(key: key);
@@ -13,6 +17,7 @@ class _LoginFormState extends State<LoginForm> {
          final _formKey= GlobalKey<FormState>();
            TextEditingController? phoneController=TextEditingController();
        TextEditingController? PasswordController=TextEditingController();
+       String? _token;
   @override
   Widget build(BuildContext context) {
 
@@ -57,7 +62,7 @@ return ListView(
                 textInputAction: TextInputAction.next,
                 textCapitalization: TextCapitalization.sentences,
                  validator: (value) {
-                    if(value!.isEmpty && value.length>=14&&value.length<10){
+                    if(value!.isEmpty){
                       return 'phone is incorrect';
                     } 
                     return null; 
@@ -74,6 +79,7 @@ return ListView(
             SizedBox(
               height: 70,
               child: TextFormField(
+                controller: PasswordController,
                 keyboardType: TextInputType.text,
                 maxLines: 1,
                 maxLength: 40,
@@ -105,7 +111,12 @@ return ListView(
             InkWell(
               onTap: () {
                if(_formKey.currentState!.validate()){
-                
+                postUsernameAndPassword(phoneController!.text,PasswordController!.text)
+                .then((_)=> setState(() {
+                  PasswordController!.text='';
+                  phoneController!.text='';
+                })
+                );
                }
               },
               child:const ButtonContainer(color: Colors.orange, title: 'SIGN IN')
@@ -114,7 +125,6 @@ return ListView(
                children: [
                  const Text('have not account yet?',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
                  Text('Register',style: TextStyle(color: Colors.blue.shade900),),
-
                ],
              )
           ],
@@ -122,4 +132,46 @@ return ListView(
       ),] 
     );
   }
+  Future<http.Response> postUsernameAndPassword(String phone, String password) async{
+    
+  final response= await http.post(
+    Uri.parse('https://rensys-laravel.merahitechnologies.com/api/user_login'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'accept': 'application/json',
+    },
+    body: jsonEncode(<String, String>{
+      'phone_number': phone,
+      'password' : password,   
+    }),
+  );
+  if(response.statusCode!=200){
+    print('There is some thing wrong ////////////////'+response.statusCode.toString());
+  }
+  else if(response.statusCode==200){
+   Map<String, dynamic> requestResponse=(jsonDecode(response.body));
+   print('///////////////////////////////');
+   final token=requestResponse['access_token'];
+   print(requestResponse['access_token']);
+   print('//////////////////////////////////');
+   print(requestResponse['user']['id']);
+   final userId=requestResponse['user']['id'];
+   print (requestResponse['user']['phone_number']);
+   final phoneNumber=requestResponse['user']['phone_number'];
+      print('///////////////////////////////');
+
+   saveTokenAndId(userId, token,phoneNumber);
+  }
+     return response;
+}
+void saveTokenAndId(int id, String token,String phone)async{
+  SharedPreferences preferences= await SharedPreferences.getInstance();
+  preferences.setInt('user_id', id);
+  preferences.setString('access_token', token);
+  preferences.setString('phone_number', phone);
+  setState(() {
+    token=preferences.getString('access_token')!;
+  });
+}
+
 }

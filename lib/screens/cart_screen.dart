@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:rynsysengineering/providers/product/cart_list.dart';
 import 'package:rynsysengineering/screens/checkout_screen.dart';
+import 'package:rynsysengineering/util/payment_types_service.dart';
+import 'package:rynsysengineering/util/shop_service.dart';
 import 'package:rynsysengineering/widgets/button_container.dart';
 
 import '../models/cart_item_model.dart';
@@ -224,12 +226,17 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed(checkoutScreen.routeName);
-                    },
+                   cart.getTotalPrice!=0.0?
+                  //  ShopService().fetchShops()
+                  //  .then((_) => PaymentTypeService().fetchPaymentTypes())
+                   Navigator.of(context).pushNamed(checkoutScreen.routeName)
+                   : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Add product to order')));},
                     child: const ButtonContainer(
                       color: Colors.orange,
                       title: 'Checkout',
-                    )),
+                    )
+                )
               ],
             ),
           ],

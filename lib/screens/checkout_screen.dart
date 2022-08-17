@@ -70,7 +70,7 @@ class checkoutScreen extends StatelessWidget {
         ),
         body:  TabBarView(children: [
            LoginForm(),
-           const DeliveryAddress(),
+            DeliveryAddressWidget(),
            const PaymentWidget(),
            const Confirmation(),
         ]),
