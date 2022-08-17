@@ -14,16 +14,12 @@ class Product {
   String name;
   String model;
   String brand;
-  String price;
-  String quantity;//qty
+  int price;
+  int quantity;//qty
   int possibleQuantity;//possible_qty
-  String isFeatured;//is_featured
-  String isActive;//is_active
-  String weight;
-  // double? maximum_supply_voltage;
-  // double? maximum_current_voltage;
-  // String ? description;
-  // String ? detail;
+  int isFeatured;//is_featured
+  int isActive;//is_active
+  int weight;
   Photo images;
   Category category;
   Product({
@@ -57,7 +53,6 @@ class Product {
       category: Category.fromJson(jsonData['category']));
   }
 }
-
 class Photo {
   int id;
   String path;

@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:rynsysengineering/widgets/button_container.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({Key? key}) : super(key: key);
+class LoginForm extends StatefulWidget {
+   LoginForm({Key? key}) : super(key: key);
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
   final textStyle=const TextStyle(fontSize: 16,fontWeight: FontWeight.w400);
+         final _formKey= GlobalKey<FormState>();
+           TextEditingController? phoneController=TextEditingController();
+       TextEditingController? PasswordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return ListView(
+
+return ListView(
       children:[
       const Divider(color: Colors.black,thickness: 3,),
         Container(
         margin: const EdgeInsets.symmetric(horizontal: 18),
         child: Form(
+          key: _formKey,
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,7 +36,8 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               height: 70,
               child: TextFormField(
-                keyboardType: TextInputType.text,
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
                 maxLines: 1,
                 maxLength: 40,
                 decoration: InputDecoration(
@@ -39,15 +51,17 @@ class LoginForm extends StatelessWidget {
                         style: BorderStyle.solid,
                       ),
                     )),
-                onChanged: (value) {},
-                //obscureText: ,
-                onSaved: (_) {},
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.start,
                 textInputAction: TextInputAction.next,
                 textCapitalization: TextCapitalization.sentences,
-                validator: (_) {},
+                 validator: (value) {
+                    if(value!.isEmpty && value.length>=14&&value.length<10){
+                      return 'phone is incorrect';
+                    } 
+                    return null; 
+                }
               ),
             ),
             const SizedBox(
@@ -74,20 +88,26 @@ class LoginForm extends StatelessWidget {
                         style: BorderStyle.solid,
                       ),
                     )),
-                onChanged: (value) {},
                 obscureText: true,
-                onSaved: (_) {},
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.start,
                 textInputAction: TextInputAction.done,
                 textCapitalization: TextCapitalization.sentences,
-                validator: (_) {},
+                validator: (value) {
+                    if(value!.isEmpty && value.length<4){
+                      return 'password is incorrect/too short';
+                    }  
+                }
               ),
             ),
             const SizedBox(height: 10,),
             InkWell(
-              onTap: () {},
+              onTap: () {
+               if(_formKey.currentState!.validate()){
+                
+               }
+              },
               child:const ButtonContainer(color: Colors.orange, title: 'SIGN IN')
             ),
              Row(

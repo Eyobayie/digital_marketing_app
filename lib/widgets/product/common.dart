@@ -55,7 +55,7 @@ class Common extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children:  [
-              Text(snapshot.data!.price +' ETB',
+              Text(snapshot.data!.price.toString() +' ETB',
              style:const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
              ),
              Wrap(

@@ -8,7 +8,7 @@ class ProductService {
     final response = await http
         .get(Uri.parse('https://rensys-laravel.merahitechnologies.com/api/products'));
     if (response.statusCode == 200) {
-         print(jsonDecode(response.body)['data'][1]['price']);
+         print(jsonDecode(response.body)['data']);
          products=ProductList.fromJson(jsonDecode(response.body)['data']);
          return products;
      } else {

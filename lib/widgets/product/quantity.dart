@@ -29,10 +29,10 @@ class _ProductQuantityState extends State<ProductQuantity> {
 
   void increaseQuantity() {
     setState(() {
-      if (_counter < int.parse(widget.productDetail!.quantity)) {
+      if (_counter <=widget.productDetail!.quantity) {
         _counter++;
       } else {
-        _counter = int.parse(widget.productDetail!.quantity);
+        _counter =widget.productDetail!.quantity;
       }
     });
   }
@@ -106,7 +106,7 @@ class _ProductQuantityState extends State<ProductQuantity> {
               builder: (context, cart, _) => InkWell(
                 onTap: () {
                   cart.addItem(
-                    widget.productDetail!.id.toString(),
+                    widget.productDetail!.id,
                     widget.productDetail!.name,
                     widget.productDetail!.price,
                     widget.productDetail!.allPhotos.imageList![0].path,

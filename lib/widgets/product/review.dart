@@ -71,7 +71,7 @@ class _ProductReviewState extends State<ProductReview> {
                              InkWell(
                               onTap: (){
                                 cart.addItem(
-                                  widget.productDetail!.id.toString(), 
+                                  widget.productDetail!.id, 
                                   widget.productDetail!.name, 
                                   widget.productDetail!.price, 
                                   widget.productDetail!.allPhotos.imageList![0].path);

@@ -25,7 +25,7 @@ class ProductDetailWidget extends StatelessWidget {
                InkWell(
                 onTap: (){
                   cart.addItem(
-                    productDetail!.id.toString(),
+                    productDetail!.id,
                     productDetail!.name,
                     productDetail!.price,
                     productDetail!.allPhotos.imageList![0].path,

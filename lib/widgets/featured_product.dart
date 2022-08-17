@@ -54,7 +54,7 @@ class FeaturedProduct extends StatelessWidget {
                           crossAxisCount: 2,
                           childAspectRatio: ((2 / 3) * 0.9),
                         ),
-                        itemBuilder: ((context, index) => int.parse(snapshot.data!.products[index].isFeatured)==1?Container(
+                        itemBuilder: ((context, index) => snapshot.data!.products[index].isFeatured==1?Container(
                               margin: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 7),
                               decoration: BoxDecoration(
@@ -121,7 +121,7 @@ class FeaturedProduct extends StatelessWidget {
                                        InkWell(
                                         onTap: (){
                                           cart.addItem(
-                                            snapshot.data!.products[index].id.toString(), 
+                                            snapshot.data!.products[index].id, 
                                             snapshot.data!.products[index].name,
                                             snapshot.data!.products[index].price,
                                             snapshot.data!.products[index].images.path,

@@ -4,10 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:rynsysengineering/providers/product/cart_list.dart';
 import 'package:rynsysengineering/providers/product/product.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
-import 'package:rynsysengineering/util/home_products_service.dart';
 import 'package:rynsysengineering/widgets/search_field.dart';
 
-import '../util/product_detail_service.dart';
 import '../widgets/button_container.dart';
 
 class ProductListScreen extends StatelessWidget {
@@ -233,7 +231,7 @@ class ProductListScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Text(productList.products[index].price + ' ETB',
+                              Text(productList.products[index].price.toString()+ ' ETB',
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
@@ -244,7 +242,7 @@ class ProductListScreen extends StatelessWidget {
                                 builder: (context, cart, child) => InkWell(
                                   onTap: () {
                                     cart.addItem(
-                                      productList.products[index].id.toString(), 
+                                      productList.products[index].id, 
                                       productList.products[index].name,
                                       productList.products[index].price,
                                       productList.products[index].images.path,

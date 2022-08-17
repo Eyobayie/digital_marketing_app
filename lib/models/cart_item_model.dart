@@ -2,12 +2,14 @@ import 'package:rynsysengineering/providers/product/productdetailprovider.dart';
 
 class CartItem{
   String cartId;
+  int productId;
   String name;
-  String price;
+  int price;
   String imgUrl;
-  String quantity;
+  int quantity;
   CartItem({
            required this.cartId,
+           required this.productId,
            required this.name,
            required this.price,
            required this.quantity,

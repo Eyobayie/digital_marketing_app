@@ -1,17 +1,4 @@
 
-
-
-//  class ProductList {
-//    List<productDetail> products=[];
-//    ProductList({required this.products});
-
-//    factory ProductList.fromJson(List<dynamic> parsedJson){
-//       List<productDetail> productList = parsedJson.map((product)=>productDetail.fromJson(product)).toList();
-//     return ProductList(
-//        products: productList,
-//     );
-//    }
-//  }
 import 'package:flutter/cupertino.dart';
 
 class ProductDetail{
@@ -19,17 +6,17 @@ class ProductDetail{
   String name;
   String model;
   String brand;
-  String price;
-  String quantity;//qty
-  String isFeatured;//is_featured
-  String isActive;//is_active
-  String weight;
+  int price;
+  int  quantity;//qty
+  int isFeatured;//is_featured
+  // int isActive;//is_active
+  int weight;
   String? maximumSupplyVoltage;
   String? maximumCurrentVoltage;
   String description;
   String detail;
   PhotoList allPhotos;
-  String categoryId;
+  int categoryId;
   ProductDetail({
     required this.id,
     required this.name,
@@ -38,7 +25,7 @@ class ProductDetail{
     required this.price,
     required this.quantity,
     required this.isFeatured,
-    required this.isActive,
+    //required this.isActive,
     required this.weight, 
              this.maximumSupplyVoltage,
              this.maximumCurrentVoltage,
@@ -57,7 +44,7 @@ class ProductDetail{
       price: jsonData['price'], 
       quantity: jsonData['qty'], 
       isFeatured: jsonData['is_featured'], 
-      isActive: jsonData['is_active'], 
+      //isActive: jsonData['is_active'], 
       weight: jsonData['weight'], 
       maximumSupplyVoltage: jsonData['maximum_supply_voltage'],
       maximumCurrentVoltage: jsonData['maximum_current_power'],
@@ -102,28 +89,6 @@ class PhotoList{
    }
 }
 
-// class Category{
-//     int id;
-//     String title;
 
-//     Category({
-//       required this.id,
-//       required this.title
-//       });
-
-//      factory Category.fromJson(Map<String,dynamic> jsonData){
-//         return Category(
-//           id: jsonData['id'],
-//           title: jsonData['title']
-//           );
-//       }
-
-//      Map<String,dynamic> toJson(){
-//     return{
-//     'id':id,
-//     'title':title,
-//     };
-//    }
-//   }
 
 

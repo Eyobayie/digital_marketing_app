@@ -21,9 +21,11 @@ class _CartScreenState extends State<CartScreen> {
       const TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
   Color iconColor = Colors.orange;
   int _counter = 1;
-  void increaseProduct() {
+  void increaseProduct(int maximumQuantity) {
     setState(() {
-      _counter++;
+      if (_counter <= maximumQuantity) {
+        _counter++;
+      }
     });
   }
 
@@ -88,30 +90,15 @@ class _CartScreenState extends State<CartScreen> {
                                         style: smallTextStyle),
                                     Row(
                                       children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: iconColor,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: iconColor,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: iconColor,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: iconColor,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: iconColor,
-                                        ),
+                                        getIcon(Icons.star, Colors.orange),
+                                        getIcon(Icons.star, Colors.orange),
+                                        getIcon(Icons.star, Colors.orange),
+                                        getIcon(Icons.star, Colors.orange),
+                                        getIcon(Icons.star, Colors.orange),
                                       ],
                                     ),
                                     Text(
-                                      cartList[index].price + ' ETB',
+                                      cartList[index].price.toString() + ' ETB',
                                       style: bigTextStyle,
                                     ),
                                   ],
@@ -119,49 +106,82 @@ class _CartScreenState extends State<CartScreen> {
                               ),
                               Expanded(
                                 flex: 0,
-                                child: Column(
-                                  children: [
-                                    IconButton(
-                                        onPressed: () {
-                                          increaseProduct();
-                                        },
-                                        icon: const FaIcon(
-                                            FontAwesomeIcons.plus)),
-                                    Container(
-                                        height: 30,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color:
-                                                  Colors.black.withOpacity(0.6),
-                                              style: BorderStyle.solid,
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(5)),
-                                        child: Center(
-                                            child: Text(
-                                          cartList[index].quantity,
-                                          style: const TextStyle(
-                                              fontSize: 21,
-                                              fontWeight: FontWeight.bold),
-                                        ))),
-                                    IconButton(
-                                        onPressed: () {
-                                          decreaseProduct();
-                                        },
-                                        icon: const FaIcon(
-                                            FontAwesomeIcons.minus)),
-                                  ],
+                                child: Consumer(
+                                  builder: (context, _, child) => Column(
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              cartList[index].quantity++;
+                                            });
+                                          },
+                                          icon: const FaIcon(
+                                              FontAwesomeIcons.plus)),
+                                      Container(
+                                          height: 30,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: Colors.black
+                                                    .withOpacity(0.6),
+                                                style: BorderStyle.solid,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          child: Center(
+                                              child: Text(
+                                            cartList[index].quantity.toString(),
+                                            style: const TextStyle(
+                                                fontSize: 21,
+                                                fontWeight: FontWeight.bold),
+                                          ))),
+                                      IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              if (cartList[index].quantity <=
+                                                  1) {
+                                                cartList[index].quantity = 1;
+                                              } else {
+                                                cartList[index].quantity--;
+                                              }
+                                            });
+                                          },
+                                          icon: const FaIcon(
+                                          FontAwesomeIcons.minus)),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                           InkWell(
                             onTap: () {
-                              cart.removeCartItem(cartList[index].cartId);
+                              cart.removeCartItem(
+                                  cart.cartItems.keys.toList()[index]);
                             },
-                            child:const ButtonContainer(color: Color(0xff84BD3A), title: 'Revove') ,
+                            child: Container(
+                              width: 160,
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff84BD3A),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Center(
+                                  child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: Text(
+                                  'Remove',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20),
+                                ),
+                              )),
+                            ),
+                            // child:const ButtonContainer(color: Color(0xff84BD3A), title: 'Remove'),
                           ),
                           Divider(
                               thickness: 1,
@@ -171,16 +191,17 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   )
                 : const Expanded(
-                  child:  Center(
+                    child: Center(
                       child: Text(
                         'There is no product !!!',
-                        style: TextStyle(color: Colors.deepOrange,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                        style: TextStyle(
+                          color: Colors.deepOrange,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                ),
+                  ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -202,16 +223,25 @@ class _CartScreenState extends State<CartScreen> {
                   ],
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(checkoutScreen.routeName);
-                  },
-                  child: const ButtonContainer(color: Colors.orange, title: 'Checkout',)
-                ),
+                    onTap: () {
+                      Navigator.of(context).pushNamed(checkoutScreen.routeName);
+                    },
+                    child: const ButtonContainer(
+                      color: Colors.orange,
+                      title: 'Checkout',
+                    )),
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget getIcon(IconData iconData, Color color) {
+    return Icon(
+      Icons.star,
+      color: iconColor,
     );
   }
 }
