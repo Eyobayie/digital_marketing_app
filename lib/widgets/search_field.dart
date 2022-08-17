@@ -40,7 +40,7 @@ class SearchField extends StatelessWidget {
               decoration: InputDecoration(
                 suffixIcon: const Icon(Icons.search),
                 suffixIconColor: const Color.fromARGB(255, 8, 6, 6),
-                hintText: 'Search for solar products...',
+                hintText: 'Search for solar products',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),

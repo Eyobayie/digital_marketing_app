@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rynsysengineering/constants/text_decorators.dart';
-import 'package:rynsysengineering/screens/cart_screen.dart';
 import 'package:rynsysengineering/util/home_products_service.dart';
 import 'package:rynsysengineering/widgets/featured_product.dart';
 import 'package:rynsysengineering/widgets/search_field.dart';
@@ -21,6 +20,9 @@ class _HomeState extends State<Home> {
     super.initState();
     ProductService().fetchProducts();
   }
+
+  
+
   @override
   Widget build(BuildContext context) {
     final appBarHeight=MediaQuery.of(context).size.height *0.06;
@@ -32,7 +34,7 @@ class _HomeState extends State<Home> {
         shadowColor: const  Color(0xff062539),
         toolbarHeight: appBarHeight,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
           Text('RENSYS',
           style:TextDecorators.companyNameStyle

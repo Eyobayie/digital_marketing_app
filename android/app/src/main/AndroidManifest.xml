@@ -7,6 +7,8 @@
         android:label="rynsysengineering"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+       android:value="AIzaSyBuMJ86uj9D-3vqFDgrD0vcdj39LZ-G1og"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -33,5 +35,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        
     </application>
 </manifest>
