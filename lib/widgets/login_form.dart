@@ -147,6 +147,7 @@ return ListView(
   );
   if(response.statusCode!=200){
     print('There is some thing wrong ////////////////'+response.statusCode.toString());
+    print(response.body);
   }
   else if(response.statusCode==200){
    Map<String, dynamic> requestResponse=(jsonDecode(response.body));
@@ -173,5 +174,8 @@ void saveTokenAndId(int id, String token,String phone)async{
     token=preferences.getString('access_token')!;
   });
 }
-
+  Future<String?> getToken() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('access_token');
+  }
 }

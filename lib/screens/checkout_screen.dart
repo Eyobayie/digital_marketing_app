@@ -1,20 +1,21 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rynsysengineering/models/cart_item_model.dart';
 import 'package:rynsysengineering/widgets/confirmation.dart';
 import 'package:rynsysengineering/widgets/delivery_address.dart';
 import 'package:rynsysengineering/widgets/login_form.dart';
 import 'package:rynsysengineering/widgets/payment.dart';
 
 class checkoutScreen extends StatelessWidget {
-  const checkoutScreen({Key? key}) : super(key: key);
+  final  List<CartItem>? cartList;
+   int? productId;
+   int? productQuantity;
+   checkoutScreen({Key? key, this.cartList}) : super(key: key);
   final textStyle = const TextStyle(fontSize: 23, fontWeight: FontWeight.bold);
   static const routeName='checkoutRoute';
-
   @override
   Widget build(BuildContext context) {
+    List<CartItem> cartList=ModalRoute.of(context)!.settings.arguments as List<CartItem>;
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -71,7 +72,7 @@ class checkoutScreen extends StatelessWidget {
         body:  TabBarView(children: [
            LoginForm(),
             DeliveryAddressWidget(),
-           const PaymentWidget(),
+            PaymentWidget(cartList: cartList),
            const Confirmation(),
         ]),
       ),

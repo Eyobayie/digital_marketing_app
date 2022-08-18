@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart'as http;
 import 'package:rynsysengineering/providers/product/product.dart';
-
 class ProductService {
   late final ProductList products;
   Future<ProductList> fetchProducts() async {
