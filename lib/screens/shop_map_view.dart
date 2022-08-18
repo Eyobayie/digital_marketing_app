@@ -6,10 +6,7 @@ import '../util/shop_locations.dart';
 
 class ShopMapView extends StatefulWidget {
   const ShopMapView({Key? key}) : super(key: key);
-  static const CameraPosition _initialCameraPosition = CameraPosition(
-    target: LatLng(37.361353, 11.574209),
-    zoom: 9,
-  );
+  
 
   @override
   State<ShopMapView> createState() => _ShopMapViewState();
@@ -17,6 +14,10 @@ class ShopMapView extends StatefulWidget {
 
 class _ShopMapViewState extends State<ShopMapView> {
   Completer<GoogleMapController> _controller = Completer();
+   final CameraPosition _initialCameraPosition = const CameraPosition(
+    target: LatLng(37.361353, 11.574209),
+    zoom: 12,
+  );
 
   final Set<Marker> _markers = {};
   List<Shop> shopList = [];
@@ -33,11 +34,6 @@ class _ShopMapViewState extends State<ShopMapView> {
   @override
   void initState() {
     super.initState();
-    BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(12, 12)),
-            'assets/images/markerIcon.png')
-        .then((d) {
-      customIcon = d;
-    });
     fetchShopCoordinates();
   }
 
@@ -65,15 +61,6 @@ class _ShopMapViewState extends State<ShopMapView> {
                 title: e.shopName,
               )))
           .toList());
-      // _markers.add(
-      //   const Marker(
-      //     markerId: MarkerId("id-1"),
-      //     position: LatLng(37.361353, 12.574209),
-      //     infoWindow: InfoWindow(
-      //       title: "GooglePlex"
-      //     )
-      //   )
-      // );
     });
   }
 
@@ -87,7 +74,7 @@ class _ShopMapViewState extends State<ShopMapView> {
       ),
       body: GoogleMap(
         mapType: MapType.normal,
-        initialCameraPosition: ShopMapView._initialCameraPosition,
+        initialCameraPosition: _initialCameraPosition,
         onMapCreated: _onMapCreated,
         mapToolbarEnabled: true,
         buildingsEnabled: false,
