@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rynsysengineering/models/payment_types.dart';
-import 'package:rynsysengineering/util/payment_types_service.dart';
-
+import 'package:rynsysengineering/providers/product/order_list.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../models/cart_item_model.dart';
 import '../providers/product/cart_list.dart';
 
 class PaymentWidget extends StatefulWidget {
-  const PaymentWidget({Key? key}) : super(key: key);
+  final List<CartItem> cartList;
+   PaymentWidget({Key? key,required this.cartList,}) : super(key: key);
 
   @override
   State<PaymentWidget> createState() => _PaymentWidgetState();
@@ -20,16 +21,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
       fontSize: 18,
       fontWeight: FontWeight.w500,
       );
-
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: FutureBuilder<PaymentTypeList>(
-        future: PaymentTypeService().fetchPaymentTypes(),
-        builder: (context, snapshot){
-          if(snapshot.connectionState==ConnectionState.done){
-            return ListView(
+      child: ListView(
        padding:const EdgeInsets.symmetric(horizontal:10,),
           children: [
            const Divider(color: Colors.black, thickness: 3,),
@@ -41,7 +37,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     ListView.builder(
                      shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: cart.cartItems.values.toList().length,
+                      itemCount: widget.cartList.length,
                       itemBuilder: (context,index)=>
                        Column(
                          children: [
@@ -58,25 +54,23 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               ],
                               ),
                              child: ListTile(
-                                leading:   Image.asset(cart.cartItems.values.toList()[index].imgUrl),
-                                title:     Text(cart.cartItems.values.toList()[index].name,style:textStyle),
-                                subtitle:  Text(cart.cartItems.values.toList()[index].quantity.toString(),style: textStyle,),
-                                trailing:  Text(cart.cartItems.values.toList()[index].price.toString(),style: textStyle,),
-                      ),
-                           ),
+                               leading:   Image.network(widget.cartList[index].imgUrl),
+                                title:     Text(widget.cartList[index].name,style:textStyle),
+                                subtitle:  Text(widget.cartList[index].quantity.toString(),style: textStyle,),
+                                trailing:  Text(widget.cartList[index].price.toString(),style: textStyle,),
+                               ),
+                              ),
                            const SizedBox(height: 15,),
                          ],
                        ),
                     ),
-                   
-                  
                 ],
                 childrenPadding:const EdgeInsets.symmetric(horizontal: 10),
                 iconColor: Colors.black,
                 onExpansionChanged: (value){
                   if(value){
-                   
-                  }
+                     
+                   }
                 },
                 ),
              ),
@@ -137,26 +131,37 @@ class _PaymentWidgetState extends State<PaymentWidget> {
               ],),
              ],),
              const SizedBox(height: 20),
-             Container(
-              width: 250,
-              height: 40,
-              decoration:  BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Center(
-                child: Text('PERCHASE ORDER-3000 ETB',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),),
+             InkWell(
+              onTap: ()async{
+               final  preferences= await SharedPreferences.getInstance();
+               final String? token=preferences.getString('access_token');
+               final addressId=preferences.getInt('address_id');
+                Provider.of<Orders>(context,listen: false).orderPost(
+                  10, 
+                  DateTime.now(), 
+                  widget.cartList.map((item) => {
+                    'id':item.productId,
+                    'qty':item.quantity,
+                  }).toList(), 
+                  108, 
+                  19, 
+                  4,
+                  token,
+                  );
+              },
+               child: Container(
+                width: 250,
+                height: 40,
+                decoration:  BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Center(
+                  child: Text('PERCHASE ORDER-3000 ETB',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),),
+               ),
              )
           ],
-        );
-          }
-          else if(snapshot.hasError){
-            return const Text('THERE IS SOME ERROR');
-          }
-          return const Center(child:  CircularProgressIndicator());
-        },
-        
-      ),
+            ),
     );
   }
   Widget ShadowContainer(String title,String value){

@@ -2,14 +2,17 @@ import 'cart_item_model.dart';
 
 class OrderItem{
   String id;
-  double totalCost;
+  int shopId;
   List<CartItem> items;
-  DateTime date;
-
+  DateTime pickupDate;
+  int userId;
+  int addressId;
   OrderItem({
     required this.id,
-    required this.totalCost,
+    required this.shopId,
+    required this.pickupDate,
      required this.items,
-     required this.date
+     required this.userId,
+     required this.addressId
   });
 }

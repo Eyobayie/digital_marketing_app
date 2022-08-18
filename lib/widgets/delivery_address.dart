@@ -122,32 +122,37 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Center(
-                      child: Container(
-                        width: 180,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                offset: const Offset(1, 1),
-                                blurRadius: 1,
-                                spreadRadius: 1),
-                          ],
-                          color: Colors.orange,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Center(
-                            child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Text(
-                            'Next',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 20),
+                    InkWell(
+                      onTap: (){
+                        //saveToke('addressId')
+                      },
+                      child: Center(
+                        child: Container(
+                          width: 180,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: const Offset(1, 1),
+                                  blurRadius: 1,
+                                  spreadRadius: 1),
+                            ],
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                        )),
+                          child: const Center(
+                              child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              'Next',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20),
+                            ),
+                          )),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -234,14 +239,8 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
       ]),
     );
   }
-
-  // Future<bool> isTokenExist() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   token = preferences.getString('access_token');
-  //   if (token != null) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+Future<bool> saveToke( int addressId) async{
+  SharedPreferences preferences= await SharedPreferences.getInstance();
+   return preferences.setInt('address_id', addressId);
+}
 }

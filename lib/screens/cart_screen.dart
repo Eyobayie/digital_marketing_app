@@ -227,9 +227,8 @@ class _CartScreenState extends State<CartScreen> {
                 InkWell(
                     onTap: () {
                    cart.getTotalPrice!=0.0?
-                  //  ShopService().fetchShops()
-                  //  .then((_) => PaymentTypeService().fetchPaymentTypes())
-                   Navigator.of(context).pushNamed(checkoutScreen.routeName)
+                   Navigator.of(context).pushNamed(checkoutScreen.routeName,arguments: cartList)
+                   .then((value) => cart.removeAll())
                    : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Add product to order')));},
                     child: const ButtonContainer(
