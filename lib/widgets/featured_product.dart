@@ -79,7 +79,7 @@ class FeaturedProduct extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Container(
-                                        height: 90,
+                                        height: 120,
                                         width: double.infinity,
                                         decoration: BoxDecoration(
                                             borderRadius:
@@ -92,7 +92,7 @@ class FeaturedProduct extends StatelessWidget {
                                             )),
                                       ),
                                       const SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
                                       Text(
                                         
@@ -108,7 +108,7 @@ class FeaturedProduct extends StatelessWidget {
                                         textAlign: TextAlign.center,
                                       ),
                                       const SizedBox(
-                                        height: 5,
+                                        height: 15,
                                       ),
 
                                       Text(
@@ -122,7 +122,7 @@ class FeaturedProduct extends StatelessWidget {
                                       //     height: 5,
                                       //   ),
                                       const SizedBox(
-                                        height: 5,
+                                        height: 10,
                                       ),
                                       Consumer<Cart>(
                                         builder: (context, cart, child) =>
@@ -150,7 +150,7 @@ class FeaturedProduct extends StatelessWidget {
                                     ],
                                   )),
                             )
-                          : const Text('Faild to load'))),
+                          : Container())),
                 ),
               ],
             );

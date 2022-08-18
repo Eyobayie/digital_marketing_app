@@ -6,11 +6,11 @@ import 'package:rynsysengineering/widgets/delivery_address.dart';
 import 'package:rynsysengineering/widgets/login_form.dart';
 import 'package:rynsysengineering/widgets/payment.dart';
 
-class checkoutScreen extends StatelessWidget {
+class CheckoutScreen extends StatelessWidget {
   final  List<CartItem>? cartList;
    int? productId;
    int? productQuantity;
-   checkoutScreen({Key? key, this.cartList}) : super(key: key);
+   CheckoutScreen({Key? key, this.cartList}) : super(key: key);
   final textStyle = const TextStyle(fontSize: 23, fontWeight: FontWeight.bold);
   static const routeName='checkoutRoute';
   @override

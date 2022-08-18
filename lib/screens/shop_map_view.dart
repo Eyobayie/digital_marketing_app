@@ -6,7 +6,6 @@ import '../util/shop_locations.dart';
 
 class ShopMapView extends StatefulWidget {
   const ShopMapView({Key? key}) : super(key: key);
-
   @override
   State<ShopMapView> createState() => _ShopMapViewState();
 }
