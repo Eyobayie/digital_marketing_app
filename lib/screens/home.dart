@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rynsysengineering/constants/text_decorators.dart';
+import 'package:rynsysengineering/screens/product_list.dart';
 import 'package:rynsysengineering/util/home_products_service.dart';
 import 'package:rynsysengineering/widgets/featured_product.dart';
 import 'package:rynsysengineering/widgets/search_field.dart';
@@ -44,7 +45,9 @@ class _HomeState extends State<Home> {
           .copyWith(color:Colors.green,
           ))],),
       actions: [
-        IconButton(onPressed: (){}, icon:const Icon(Icons.search) ),
+        IconButton(onPressed: (){
+          //Navigator.of(context).pushNamed(ProductListScreen.productListRoute);
+        }, icon:const Icon(Icons.search,size: 30,) ),
         Container(
           margin: const EdgeInsets.only(right: 20),
           child: Consumer<Cart>(

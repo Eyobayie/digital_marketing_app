@@ -105,55 +105,51 @@ class ProductListScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Container(height:10),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              height: size.height * 0.22,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SearchField(
-                    color: Colors.white,
-                    width: MediaQuery.of(context).size.width * 1,
-                    containerHeight: MediaQuery.of(context).size.height * 0.1,
-                    textFieldHeight: MediaQuery.of(context).size.height * 0.07,
-                  ),
-                  Container(
-                    color: const Color.fromRGBO(236, 241, 254, 0.059),
-                    height: MediaQuery.of(context).size.height * 0.08,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: const [
-                            Text('Category', style: TextStyle(fontSize: 20)),
-                            Icon(Icons.arrow_forward_ios),
-                            Text('Home solar', style: TextStyle(fontSize: 20)),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: const FaIcon(
-                                  FontAwesomeIcons.filter,
-                                )),
-                            IconButton(
-                                onPressed: () {},
-                                icon: const FaIcon(FontAwesomeIcons.sortDown)),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Text(
-                    productList.products.length.toString() + ' Products',
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                ],
-              ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SearchField(
+                  color: Colors.white,
+                  width: MediaQuery.of(context).size.width * 1,
+                  containerHeight: MediaQuery.of(context).size.height * 0.1,
+                  textFieldHeight: MediaQuery.of(context).size.height * 0.07,
+                ),
+                // Container(
+                //   color: const Color.fromRGBO(236, 241, 254, 0.059),
+                //   height: MediaQuery.of(context).size.height * 0.08,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                      // Row(
+                      //   children: const [
+                      //     Text('Category', style: TextStyle(fontSize: 20)),
+                      //     Icon(Icons.arrow_forward_ios),
+                      //     Text('Home solar', style: TextStyle(fontSize: 20)),
+                      //   ],
+                      // ),
+                      // Row(
+                      //   children: [
+                      //     IconButton(
+                      //         onPressed: () {},
+                      //         icon: const FaIcon(
+                      //           FontAwesomeIcons.filter,
+                      //         )),
+                      //     IconButton(
+                      //         onPressed: () {},
+                      //         icon: const FaIcon(FontAwesomeIcons.sortDown)),
+                      //   ],
+                      // ),
+                //     ],
+                //   ),
+                // ),
+                Text(
+                  productList.products.length.toString() + ' Products',
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ],
             ),
             SizedBox(
-              height: size.height * 0.67,
+              height: size.height * 0.7,
               child: GridView.builder(
                   itemCount: productList.products.length,
                   shrinkWrap: true,
@@ -194,49 +190,21 @@ class ProductListScreen extends StatelessWidget {
                                       fit: BoxFit.cover,
                                     )),
                               ),
-                              const SizedBox(height:5),
+                              const SizedBox(height:10),
                               Text(
                                 productList.products[index].name.length>=31
                                 ?productList.products[index].name.substring(0,30)
                                 :productList.products[index].name,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                                 const SizedBox(height: 5,),
-                              SizedBox(
-                                height: 30,
-                                child: Center(
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: iconColor,
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        color: iconColor,
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        color: iconColor,
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        color: iconColor,
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        color: iconColor,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                                 const SizedBox(height: 10,),
+                             
                               Text(productList.products[index].price.toString()+ ' ETB',
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
                               const SizedBox(
-                                height: 5,
+                                height: 10,
                               ),
                               Consumer<Cart>(
                                 builder: (context, cart, child) => InkWell(

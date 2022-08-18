@@ -7,6 +7,7 @@ import 'package:rynsysengineering/screens/cart_screen.dart';
 import 'package:rynsysengineering/screens/checkout_screen.dart';
 import 'package:rynsysengineering/screens/product_detail_screen.dart';
 import 'package:rynsysengineering/screens/product_list.dart';
+import 'package:rynsysengineering/screens/shop_products.dart';
 import 'package:rynsysengineering/widgets/confirmation.dart';
 import 'package:rynsysengineering/widgets/delivery_address.dart';
 
@@ -37,7 +38,8 @@ class MyApp extends StatelessWidget {
             ProductDetailScreen.productDetailRoute:(context)=>const ProductDetailScreen(),
             ProductListScreen.productListRoute:(context)=> ProductListScreen(),
             CartScreen.cartRoute:(context) => const CartScreen(),
-            checkoutScreen.routeName:(context) =>  checkoutScreen(),
+            CheckoutScreen.routeName:(context) =>  CheckoutScreen(),
+            ShopProducts.routeName:(context)=>const ShopProducts(),
           },
         ),
       );

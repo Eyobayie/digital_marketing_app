@@ -90,15 +90,15 @@ class _CartScreenState extends State<CartScreen> {
                                   children: [
                                     Text(cartList[index].name,
                                         style: smallTextStyle),
-                                    Row(
-                                      children: [
-                                        getIcon(Icons.star, Colors.orange),
-                                        getIcon(Icons.star, Colors.orange),
-                                        getIcon(Icons.star, Colors.orange),
-                                        getIcon(Icons.star, Colors.orange),
-                                        getIcon(Icons.star, Colors.orange),
-                                      ],
-                                    ),
+                                    // Row(
+                                    //   children: [
+                                    //     getIcon(Icons.star, Colors.orange),
+                                    //     getIcon(Icons.star, Colors.orange),
+                                    //     getIcon(Icons.star, Colors.orange),
+                                    //     getIcon(Icons.star, Colors.orange),
+                                    //     getIcon(Icons.star, Colors.orange),
+                                    //   ],
+                                    // ),
                                     Text(
                                       cartList[index].price.toString() + ' ETB',
                                       style: bigTextStyle,
@@ -227,7 +227,7 @@ class _CartScreenState extends State<CartScreen> {
                 InkWell(
                     onTap: () {
                    cart.getTotalPrice!=0.0?
-                   Navigator.of(context).pushNamed(checkoutScreen.routeName,arguments: cartList)
+                   Navigator.of(context).pushNamed(CheckoutScreen.routeName,arguments: cartList)
                    .then((value) => cart.removeAll())
                    : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Add product to order')));},
@@ -244,10 +244,10 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  Widget getIcon(IconData iconData, Color color) {
-    return Icon(
-      Icons.star,
-      color: iconColor,
-    );
-  }
+  // Widget getIcon(IconData iconData, Color color) {
+  //   return Icon(
+  //     Icons.star,
+  //     color: iconColor,
+  //   );
+  // }
 }
