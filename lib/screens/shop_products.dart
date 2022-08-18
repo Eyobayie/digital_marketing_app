@@ -12,6 +12,7 @@ class ShopProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     final productId=ModalRoute.of(context)!.settings.arguments as int;
      return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -31,6 +32,11 @@ class ShopProducts extends StatelessWidget {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  SizedBox(
+                    height: 30,
+                    child: Center(child: Text(snapshot.data!.categoryproducts.length.toString() + ' Products',
+                    style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 18) ,)),
+                  ),
                   Expanded(
                     child: GridView.builder(
                         itemCount: snapshot.data!.categoryproducts.length,

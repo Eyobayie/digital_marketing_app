@@ -51,25 +51,9 @@ class Common extends StatelessWidget {
               // },
           ),
            SizedBox(height: separetorHeight,),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:  [
-              Text(snapshot.data!.price.toString() +' ETB',
+          Text(snapshot.data!.price.toString() +' ETB',
              style:const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
              ),
-             Wrap(
-              spacing: 5,   
-               children: [
-                 Icon(Icons.star,color: iconColor,size: iconSize,),
-                 Icon(Icons.star,color: iconColor,size: iconSize),
-                 Icon(Icons.star,color: iconColor,size: iconSize),
-                 Icon(Icons.star,color: iconColor,size: iconSize),
-                 Icon(Icons.star,size: iconSize,color: iconColor,),
-                 const Text('4.5',style: TextStyle(fontWeight: FontWeight.bold),),
-               ],
-             ),
-          ],),
           const SizedBox(height: 5,),
            Text(snapshot.data!.description,
           style: const TextStyle(fontSize: 20,
