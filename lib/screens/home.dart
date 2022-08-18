@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
           ),
         )],
       ),
-      body: Column(
+      body: ListView(
        // padding: const EdgeInsets.symmetric(horizontal:10,vertical: 5),
         children: [
            SearchField(
