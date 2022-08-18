@@ -65,7 +65,6 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: [ 
-
               ImageSliders(),
              const  Shop(),
              const FeaturedProduct(),
