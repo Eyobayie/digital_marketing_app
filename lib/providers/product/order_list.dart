@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../models/cart_item_model.dart';
-import '../models/order_Item_model.dart';
+import '../../models/cart_item_model.dart';
+import '../../models/order_Item_model.dart';
 
 class Orders with ChangeNotifier{
   List<OrderItem> _orders=[];

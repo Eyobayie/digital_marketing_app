@@ -6,7 +6,6 @@ import '../util/shop_locations.dart';
 
 class ShopMapView extends StatefulWidget {
   const ShopMapView({Key? key}) : super(key: key);
-  
 
   @override
   State<ShopMapView> createState() => _ShopMapViewState();
@@ -14,7 +13,7 @@ class ShopMapView extends StatefulWidget {
 
 class _ShopMapViewState extends State<ShopMapView> {
   Completer<GoogleMapController> _controller = Completer();
-   final CameraPosition _initialCameraPosition = const CameraPosition(
+  final CameraPosition _initialCameraPosition = const CameraPosition(
     target: LatLng(37.361353, 11.574209),
     zoom: 12,
   );
@@ -50,7 +49,7 @@ class _ShopMapViewState extends State<ShopMapView> {
 
   void _onMapCreated(GoogleMapController controller) {
     // make sure to initialize before map loading
-    
+
     setState(() {
       _markers.addAll(shopList
           .map((Shop e) => Marker(
@@ -71,6 +70,9 @@ class _ShopMapViewState extends State<ShopMapView> {
         title: const Text("Shop Location"),
         centerTitle: true,
         elevation: 0,
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: const Icon(Icons.arrow_back_ios)),
       ),
       body: GoogleMap(
         mapType: MapType.normal,

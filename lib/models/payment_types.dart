@@ -24,7 +24,7 @@ class PaymentType{
     factory PaymentType.fromJson(Map<String,dynamic> jsonData){
       return PaymentType(
         id: jsonData['id'], 
-        paymentName: jsonData['payment_type'], 
+        paymentName: jsonData['payment_name'], 
         paymentDescription: jsonData['payment_description'],
         createdAt: jsonData['created_at'],     
         updatedAt: jsonData['updated_at'],   

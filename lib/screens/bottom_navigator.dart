@@ -33,9 +33,9 @@ class _BottomNavigatorScreenState extends State<BottomNavigatorScreen> {
         backgroundColor:const  Color(0xff062539),
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedFontSize:20,
-        unselectedFontSize: 20,
-        iconSize: 30,
+        // selectedFontSize:20,
+        // unselectedFontSize: 20,
+        // iconSize: 30,
         currentIndex: initialIndex,
         type: BottomNavigationBarType.fixed,     
         onTap: (selectedIndex){

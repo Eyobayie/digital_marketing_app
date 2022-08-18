@@ -37,6 +37,7 @@ dependencies:
   smooth_page_indicator:
   font_awesome_flutter:
   provider:
+  shared_preferences:
   http: ^0.13.4
   flutter_html: ^2.2.1
   google_maps_flutter:

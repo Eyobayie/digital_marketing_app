@@ -43,7 +43,7 @@ class Cart with ChangeNotifier {
               name: existingItem.name,
               imgUrl: existingItem.imgUrl,
               price: existingItem.price,
-              quantity: qty));
+              quantity: qty is int? qty:int.parse(qty)));
     } else {
       _cartItems.putIfAbsent(
           productId,
@@ -52,7 +52,7 @@ class Cart with ChangeNotifier {
               productId: productId,
               name: name,
               price: price,
-              quantity: qty,
+              quantity: qty is int? qty:int.parse(qty),
               imgUrl: image));
            }
     notifyListeners();

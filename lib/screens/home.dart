@@ -44,6 +44,7 @@ class _HomeState extends State<Home> {
           .copyWith(color:Colors.green,
           ))],),
       actions: [
+        IconButton(onPressed: (){}, icon:const Icon(Icons.search) ),
         Container(
           margin: const EdgeInsets.only(right: 20),
           child: Consumer<Cart>(
@@ -63,16 +64,10 @@ class _HomeState extends State<Home> {
         )],
       ),
       body: Column(
-       // padding: const EdgeInsets.symmetric(horizontal:10,vertical: 5),
-        children: [
-           SearchField(
-            textFieldHeight: MediaQuery.of(context).size.height*0.07,
-            width: MediaQuery.of(context).size.width*0.9,
-            containerHeight:MediaQuery.of(context).size.height*0.09,
-             ),
+        children: [ 
               ImageSliders(),
              const  Shop(),
-             FeaturedProduct(),
+             const FeaturedProduct(),
          ],
       ),
     );

@@ -8,6 +8,7 @@ class Shop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       color: const Color.fromARGB(179, 242, 228, 228),
       height: MediaQuery.of(context).size.height * 0.15,
       child: ListView(
@@ -17,18 +18,20 @@ class Shop extends StatelessWidget {
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=> ShopMapView()));
             },
-            child: Container(
-                    padding: const EdgeInsets.only(right: 15, left: 5),
-          
-              height: 150,
-              width: MediaQuery.of(context).size.width * 0.28,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Image.asset(
-                'assets/images/shop2.jpg',
-                fit: BoxFit.cover,
-                width: double.infinity,
+            child: ClipRRect(
+              child: Container(
+                      padding: const EdgeInsets.only(right: 15, left: 5),
+                      
+                height: 150,
+                width: MediaQuery.of(context).size.width * 0.28,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.asset(
+                  'assets/images/shop2.jpg',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
               ),
             ),
           ),
