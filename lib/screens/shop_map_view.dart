@@ -68,6 +68,7 @@ class _ShopMapViewState extends State<ShopMapView> {
       appBar: AppBar(
         title: const Text("Shop Location"),
         centerTitle: true,
+        backgroundColor: const  Color(0xff062539),
         elevation: 0,
         leading: IconButton(onPressed: (){
           Navigator.pop(context);

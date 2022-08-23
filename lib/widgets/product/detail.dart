@@ -30,6 +30,8 @@ class ProductDetailWidget extends StatelessWidget {
                     productDetail!.price,
                     productDetail!.allPhotos.imageList![0].path,
                     );
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Add product to order')));
                 },
                 child:  const ButtonContainer(
                     color: Color(0xff84BD3A), title: 'Add to cart'),

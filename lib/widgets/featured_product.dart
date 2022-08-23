@@ -141,6 +141,8 @@ class FeaturedProduct extends StatelessWidget {
                                                         .images
                                                         .path,
                                                   );
+                                                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                                    content: Text('Add product to order')));
                                                 },
                                                 child: const ButtonContainer(
                                                     color: Colors.orange,

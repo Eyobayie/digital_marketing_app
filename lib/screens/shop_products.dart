@@ -22,8 +22,8 @@ class ShopProducts extends StatelessWidget {
         icon:const Icon(Icons.arrow_back_ios,size: 30,color:Colors.black),
         ),
         centerTitle: true,
-        title: Text('Shop $productId',
-        style:const TextStyle(color: Colors.black),),),
+        title:const Text('Solar products',
+        style: TextStyle(color: Colors.black),),),
        body: FutureBuilder<CatProductList>(
         future: CategoryProductService().fetchCategoryProducts(productId),
         builder: (context, snapshot) {
@@ -31,11 +31,12 @@ class ShopProducts extends StatelessWidget {
             if (snapshot.hasData) {
               return Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: 30,
-                    child: Center(child: Text(snapshot.data!.categoryproducts.length.toString() + ' Products',
-                    style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 18) ,)),
+                    child: Text(snapshot.data!.categoryproducts.length.toString() + ' Products',
+                    style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 18) ,),
                   ),
                   Expanded(
                     child: GridView.builder(
@@ -130,6 +131,8 @@ class ShopProducts extends StatelessWidget {
                                                           .photo!
                                                           .path,
                                                     );
+                                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                                    content: Text('Add product to order')));
                                                   },
                                                   child: const ButtonContainer(
                                                       color: Colors.orange,

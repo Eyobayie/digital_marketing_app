@@ -215,6 +215,8 @@ class ProductListScreen extends StatelessWidget {
                                       productList.products[index].price,
                                       productList.products[index].images.path,
                                       );
+                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Add product to order')));
                                   },
                                   child:const ButtonContainer(color: Colors.orange, title: 'Add to cart')
                                 ),

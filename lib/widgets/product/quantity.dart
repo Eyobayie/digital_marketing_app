@@ -112,6 +112,8 @@ class _ProductQuantityState extends State<ProductQuantity> {
                     widget.productDetail!.allPhotos.imageList![0].path,
                     qty: _counter.toString(),
                   );
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Add product to order')));
                 },
                 child: const ButtonContainer(
                     color: Color(0xff84BD3A), title: 'Add to cart'),

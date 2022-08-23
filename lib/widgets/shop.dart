@@ -12,82 +12,134 @@ class Shop extends StatelessWidget {
       color: const Color.fromARGB(179, 242, 228, 228),
       height: MediaQuery.of(context).size.height * 0.15,
       child: ListView(
-      scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.horizontal,
         children: [
           GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> ShopMapView()));
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ShopMapView()));
             },
-            child: ClipRRect(
-              child: Container(
-                      padding: const EdgeInsets.only(right: 15, left: 5),
-                      
-                height: 150,
-                width: MediaQuery.of(context).size.width * 0.28,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+            child: Stack(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(right: 15, left: 5),
+                  height: 150,
+                  width: MediaQuery.of(context).size.width * 0.28,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(
+                    'assets/images/shop2.jpg',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                 ),
-                child: Image.asset(
-                  'assets/images/shop2.jpg',
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+                const Positioned(
+                  child: Text(
+                    'Go local',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  top: 5,
+                  left: 10,
+                )
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(ShopProducts.routeName, arguments: 2);
+            },
+            child: Stack(
+              children: [
+                Container(
+                  height: 150,
+                  padding: const EdgeInsets.only(right: 15),
+                  width: MediaQuery.of(context).size.width * 0.28,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(
+                    'assets/images/shop1.jpg',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                 ),
-              ),
+                const Positioned(
+                  child: Text(
+                    'Solar Water \n Pump',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  top: 5,
+                  left: 5,
+                )
+              ],
             ),
           ),
           GestureDetector(
-            onTap: (){
-              Navigator.of(context).pushNamed(ShopProducts.routeName,arguments: 2);
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(ShopProducts.routeName, arguments: 6);
             },
-            child: Container(
-              height: 150,
-              padding: const EdgeInsets.only(right: 15),
-              width: MediaQuery.of(context).size.width * 0.28,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Image.asset(
-                'assets/images/shop1.jpg',
-                fit: BoxFit.cover,
-                width: double.infinity,
-              ),
+            child: Stack(
+              children: [
+                Container(
+                  height: 150,
+                  padding: const EdgeInsets.only(right: 15),
+                  width: MediaQuery.of(context).size.width * 0.28,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(
+                    'assets/images/shop3.jpg',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
+                ),
+                const Positioned(
+                  child: Text(
+                    'Solar TV \n System',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  top: 5,
+                  left: 5,
+                )
+              ],
             ),
           ),
           GestureDetector(
-            onTap: (){
-              Navigator.of(context).pushNamed(ShopProducts.routeName,arguments: 6);
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(ShopProducts.routeName, arguments: 9);
             },
-            child: Container(
-              height: 150,
-              padding: const EdgeInsets.only(right: 15),
-          
-              width: MediaQuery.of(context).size.width * 0.28,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Image.asset(
-                'assets/images/shop3.jpg',
-                fit: BoxFit.cover,
-                width: double.infinity,
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: (){
-              Navigator.of(context).pushNamed(ShopProducts.routeName,arguments: 9);
-            },
-            child: Container(
-              height: 150,
-              padding: const EdgeInsets.only(right: 15),
-              width: MediaQuery.of(context).size.width * 0.28,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Image.asset(
-                'assets/images/shop4.jpg',
-                fit: BoxFit.cover,
-                width: double.infinity,
-              ),
+            child: Stack(
+              children: [
+                Container(
+                  height: 150,
+                  padding: const EdgeInsets.only(right: 15),
+                  width: MediaQuery.of(context).size.width * 0.28,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(
+                    'assets/images/shop4.jpg',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
+                ),
+                const Positioned(
+                  child: Text(
+                    'Solar Home \n System',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  top: 5,
+                  left: 5,
+                )
+              ],
             ),
           ),
         ],

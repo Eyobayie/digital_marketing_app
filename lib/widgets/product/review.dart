@@ -75,6 +75,8 @@ class _ProductReviewState extends State<ProductReview> {
                                   widget.productDetail!.name, 
                                   widget.productDetail!.price, 
                                   widget.productDetail!.allPhotos.imageList![0].path);
+                                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                   content: Text('Add product to order')));
                               },
                                child: const ButtonContainer(color:  Color(0xff84BD3A), title: 'Add to cart')
                              ),
